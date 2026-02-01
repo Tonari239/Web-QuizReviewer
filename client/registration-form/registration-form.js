@@ -44,7 +44,7 @@ function showErrorMessage(errorMessage)
 
 async function registerUser()
 {
-	const registerEndpoint = "someString";
+	const registerEndpoint = "http://localhost/Web-QuizReviewer/server/authentication/auth-controller.php?registerUser";
 
 	await fetch(registerEndpoint, {
 		method: "POST",

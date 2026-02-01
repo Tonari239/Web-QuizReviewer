@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/models/user.php';
 require_once __DIR__ . '/models/userError.php';
+require_once __DIR__ . '/models/userSuccessAuth.php';
 require_once __DIR__ . '/../database/databaseManager.php';
 
 class AuthenticationController
@@ -13,7 +14,7 @@ class AuthenticationController
 
     public function registerUser()
     {
-        //TODO: check if this file_get_contents is even the correct way to get the input data; what is the true option?
+        // Using file_get_contents('php://input') is the correct way to read raw POST data
         $data = json_decode(file_get_contents('php://input'), true);
         $user = null; 
         try {
@@ -35,6 +36,7 @@ class AuthenticationController
 
         $this->dbManager->insertIntoTable('users', $user->toArray());
         http_response_code(200);
+        return json_encode(new UserSuccessAuth("User registered successfully"));
     }
 
     public function loginUser()
@@ -60,6 +62,7 @@ class AuthenticationController
 
         if($this->verifyUserPassword($user)) {
             http_response_code(200);
+            return json_encode(new UserSuccessAuth("Login successful"));
         }
         else
         {

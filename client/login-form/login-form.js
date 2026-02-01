@@ -35,7 +35,7 @@ async function sendForm()
 
 async function loginUser()
 {
-	const loginEndpoint = "someString";
+	const loginEndpoint = "http://localhost/Web-QuizReviewer/server/authentication/auth-controller.php?loginUser";
 
 	await fetch(loginEndpoint, {
 		method: "POST",
