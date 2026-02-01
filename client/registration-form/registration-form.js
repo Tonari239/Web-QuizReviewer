@@ -1,4 +1,5 @@
 import { validateUsername, validateEmail, validatePassword } from '../common/reused-scripts/form-validators.js';
+import { Router } from '../common/reused-scripts/router.js';
 
 const validators = [
 	validateUsername,
@@ -6,6 +7,7 @@ const validators = [
 	validatePassword,
 ];
 
+const router = new Router();
 async function sendForm()
 {
 	let errorsCount = 0;
@@ -44,7 +46,7 @@ function showErrorMessage(errorMessage)
 
 async function registerUser()
 {
-	const registerEndpoint = "http://localhost/Web-QuizReviewer/server/authentication/auth-controller.php?registerUser";
+	const registerEndpoint = router.getRegisterEndpoint();
 
 	await fetch(registerEndpoint, {
 		method: "POST",
