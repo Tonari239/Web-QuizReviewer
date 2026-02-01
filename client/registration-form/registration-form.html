@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>HW-3</title>
+		<title>Quizzer</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="registration-form.css">
 		<script type="module" src="../components/navbar.js"></script>
@@ -15,7 +15,7 @@
 		<section id="form-section">
 			<h1 id="registerHeader">Регистрация</h1>
 
-			<form action="">
+			<form id="registration-form" action="">
 				<section id="formFields">
 					<div class="input-container">
 						<label for="username">Потребителско име:</label>
@@ -24,7 +24,7 @@
 					</div>
 					<div class="input-container">
 						<label for="email">Имейл:</label>
-						<label id="email-error" class="error">Невалиден имейл формат!!</label>
+						<label id="email-error" class="error">Невалиден имейл формат!</label>
 						<input id="email" type="email" required>
 					</div>
 					
@@ -39,7 +39,7 @@
 					<label id="success">Формата е изпратен успешно!</label>
 					<label id="user-already-exists">Потребителят вече съществува!</label>
 				</div>
-				<button type="button" id="register-btn" onclick="validateFormOnSend()">Регистрирай</button>
+				<button type="button" id="register-btn" onclick="registerUser()">Регистрирай</button>
 			</form>
 		</section>
 	</body>

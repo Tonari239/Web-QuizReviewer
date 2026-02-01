@@ -43,13 +43,13 @@ form
 	align-items: center;
 }
 
-#registerHeader
+#loginHeader
 {
 	color:#420420;
 	
 }
 
-#register-btn
+#login-btn
 {
 	background-color: #FFF4F8;
 	color: #420420;
@@ -60,16 +60,6 @@ form
 	margin-top: 5rem;
 }
 
-
-.error, #user-already-exists {
-	color: red;
-	display: none;
-	max-width: 11rem;
-	white-space: normal;
-	word-break: break-word;
-	overflow-wrap: break-word;
-	margin-top: 0.25em;
-}
 
 #success
 {
@@ -87,44 +77,6 @@ form
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-nav.container {
-	margin: 0;
-	padding: 1em;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 100;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 3rem;
-}
-
-nav.container a {
-	color: #FFF4F8;
-	text-decoration: none;
-	font-size: 1.1em;
-	margin-left: 1.5em;
-	margin-right: 0;
-}
-
-nav.container a:last-child {
-	margin-right: 1.5em;
-}
-
-#nav-separator {
-	margin-left: 1rem;
-	font-weight: bold;
-}
-
-nav.container a:first-child {
-	margin-left: 1rem;
-	margin-right: auto;
-	font-size: 2rem;
-	font-weight: bold;
 }
 
 body {

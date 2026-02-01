@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>HW-3</title>
+		<title>Quizzer</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="registration-form.css">
-		<script src="registration-form.js"></script>
+		<link rel="stylesheet" href="login-form.css">
+		<script type="module" src="../components/navbar.js"></script>
+		<script src="login-form.js" defer></script>
 	</head>
 		
 	<body>
 		<header>
-			<nav class="container">
-				<a>Quizzer</a>
-				<a>Влизане</a>
-				<p id="nav-separator"> | </p>
-				<a>Регистрация</a>
-			</nav>
+			<quiz-navbar></quiz-navbar>
 		</header>
 		<section id="form-section">
-			<h1 id="registerHeader">Регистрация</h1>
+			<h1 id="loginHeader">Влизане</h1>
 
-			<form action="">
+			<form id="login-form" action="">
 				<section id="formFields">
 					<div class="input-container">
-						<label for="username">Потребителско име:</label>
-						<label id="username-error" class="error">Потребителското име трябва да е между 3 и 10 символа!</label>
-						<input id="username" type="text" required>
-					</div>
-					<div class="input-container">
 						<label for="email">Имейл:</label>
-						<label id="email-error" class="error">Невалиден имейл формат!!</label>
+						<label id="email-error" class="error">Невалиден имейл формат!</label>
 						<input id="email" type="email" required>
 					</div>
 					
@@ -38,12 +29,11 @@
 						<input id="password" type="password" required>
 					</div>
 				</section>
-
 				<div>
 					<label id="success">Формата е изпратен успешно!</label>
-					<label id="user-already-exists">Потребителят вече съществува!</label>
+					<label id="login-error">Грешка при влизането!</label>
 				</div>
-				<button type="button" id="register-btn" onclick="validateFormOnSend()">Регистрирай</button>
+				<button type="button" id="login-btn" onclick="sendForm()">Влез</button>
 			</form>
 		</section>
 	</body>
