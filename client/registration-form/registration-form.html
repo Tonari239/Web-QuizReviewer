@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HW-3</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="registration-form.css">
+		<script src="registration-form.js"></script>
+	</head>
+		
+	<body>
+		<header>
+			<nav class="container">
+				<a>Quizzer</a>
+				<a>Влизане</a>
+				<p id="nav-separator"> | </p>
+				<a>Регистрация</a>
+			</nav>
+		</header>
+		<section id="form-section">
+			<h1 id="registerHeader">Регистрация</h1>
+
+			<form action="">
+				<section id="formFields">
+					<div class="input-container">
+						<label for="username">Потребителско име:</label>
+						<label id="username-error" class="error">Потребителското име трябва да е между 3 и 10 символа!</label>
+						<input id="username" type="text" required>
+					</div>
+					<div class="input-container">
+						<label for="email">Имейл:</label>
+						<label id="email-error" class="error">Невалиден имейл формат!!</label>
+						<input id="email" type="email" required>
+					</div>
+					
+					<div class="input-container">
+						<label for="password">Парола:</label>
+						<label id="password-error" class="error">Паролата трябва да е между 6 и 10 символа, да съдържа поне една главна буква, една малка буква и една цифра!</label>
+						<input id="password" type="password" required>
+					</div>
+				</section>
+
+				<div>
+					<label id="success">Формата е изпратен успешно!</label>
+					<label id="user-already-exists">Потребителят вече съществува!</label>
+				</div>
+				<button type="button" id="register-btn" onclick="validateFormOnSend()">Регистрирай</button>
+			</form>
+		</section>
+	</body>
+</html>
