@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="login-form.css">
 		<script type="module" src="../common/reused-components/nav-bar/navbar.js"></script>
-		<script src="login-form.js" defer></script>
+		<script type="module" src="login-form.js"></script>
 		<script>
 			// Configure navbar links
 			document.addEventListener('DOMContentLoaded', () => {
@@ -40,8 +40,7 @@
 					</div>
 				</section>
 				<div>
-					<label id="success">Формата е изпратен успешно!</label>
-					<label id="login-error">Грешка при влизането!</label>
+					<label id="success">Формата е изпратена успешно!</label>
 				</div>
 				<button type="button" id="login-btn" onclick="sendForm()">Влез</button>
 			</form>

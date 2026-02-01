@@ -1,4 +1,4 @@
-import { validateUsername, validateEmail, validatePassword } from '../reused-scripts/form-validators.js';
+import { validateUsername, validateEmail, validatePassword } from '../common/reused-scripts/form-validators.js';
 
 const validators = [
 	validateUsername,
@@ -6,7 +6,7 @@ const validators = [
 	validatePassword,
 ];
 
-async function registerUser()
+async function sendForm()
 {
 	let errorsCount = 0;
 
@@ -32,6 +32,14 @@ async function registerUser()
 	{
 		showErrorMessage("Моля, коригирайте грешките във формата.");
 	}
+}
+
+function showErrorMessage(errorMessage)
+{
+	const validFormLabel = document.getElementById('success');
+	validFormLabel.style.display = "none";
+
+	alert(errorMessage);
 }
 
 async function registerUser()
@@ -63,3 +71,7 @@ function convertUserRegisterDataFormInputToJson()
 		password: document.getElementById('password').value,
 	}
 }
+
+document.getElementById("register-btn").onclick = async() => {
+  await sendForm();
+};

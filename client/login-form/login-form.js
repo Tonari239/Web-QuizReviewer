@@ -1,4 +1,4 @@
-import { validateUsername, validateEmail, validatePassword } from '../reused-scripts/form-validators.js';
+import { validateUsername, validateEmail, validatePassword } from '../common/reused-scripts/form-validators.js';
 
 const validators = [
 	validateUsername,
@@ -68,8 +68,9 @@ function showErrorMessage(errorMessage)
 	const validFormLabel = document.getElementById('success');
 	validFormLabel.style.display = "none";
 
-	const errorLabel = document.getElementById('login-error');
-	errorLabel.textContent = errorMessage;
-	errorLabel.style.display = "inline";
-	
+	alert(errorMessage);
 }
+
+document.getElementById("login-btn").onclick = async () => {
+  await sendForm();
+};

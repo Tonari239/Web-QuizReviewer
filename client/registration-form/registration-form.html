@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="registration-form.css">
 		<script type="module" src="../common/reused-components/nav-bar/navbar.js"></script>
-		<script src="registration-form.js" defer></script>
+		<script type="module" src="registration-form.js" defer></script>
 		<script>
 			// Configure navbar links
 			document.addEventListener('DOMContentLoaded', () => {
@@ -46,10 +46,9 @@
 				</section>
 
 				<div>
-					<label id="success">Формата е изпратен успешно!</label>
-					<label id="user-already-exists">Потребителят вече съществува!</label>
+					<label id="success">Формата е изпратена успешно!</label>
 				</div>
-				<button type="button" id="register-btn" onclick="registerUser()">Регистрирай</button>
+				<button type="button" id="register-btn">Регистрирай</button>
 			</form>
 		</section>
 	</body>

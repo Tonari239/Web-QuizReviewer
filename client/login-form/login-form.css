@@ -60,6 +60,15 @@ form
 	margin-top: 5rem;
 }
 
+.error {
+	color: red;
+	display: none;
+	max-width: 11rem;
+	white-space: normal;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	margin-top: 0.25em;
+}
 
 #success
 {

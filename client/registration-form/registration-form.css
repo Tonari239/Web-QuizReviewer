@@ -46,7 +46,6 @@ form
 #registerHeader
 {
 	color:#420420;
-	
 }
 
 #register-btn
@@ -60,7 +59,7 @@ form
 	margin-top: 5rem;
 }
 
-.error, #user-already-exists {
+.error {
 	color: red;
 	display: none;
 	max-width: 11rem;
