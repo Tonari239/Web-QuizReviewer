@@ -82,9 +82,6 @@ class NavBar extends HTMLElement {
 				transition: background-color 0.3s ease;
 			}
 			
-			#navbar a:hover {
-				background-color: rgba(255, 244, 248, 0.1);
-			}
 			
 			#navbar a.active {
 				background-color: rgba(255, 244, 248, 0.2);
@@ -98,10 +95,6 @@ class NavBar extends HTMLElement {
 				font-size: 1.3em;
 			}
 			
-			#navbar a:first-child:hover {
-				background-color: transparent;
-			}
-
 			#navbar-links {
 				display: flex;
 				align-items: center;
