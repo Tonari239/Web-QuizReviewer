@@ -2,43 +2,56 @@ class NavBar extends HTMLElement {
 	constructor() {
 		super();
 		
-		// Attach shadow DOM
-		const shadow = this.attachShadow({ mode: 'open' });
+		this.shadow = this.attachShadow({ mode: 'open' });
+		this._links = [];
+	}
+	
+	static get observedAttributes() {
+		return ['active'];
+	}
+	
+	connectedCallback() {
+		this._render();
+	}
+	
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (name === 'active' && oldValue !== newValue) {
+			this._render();
+		}
+	}
+	
+	set links(value) {
+		this._links = value;
+		this._render();
+	}
+	
+	get links() {
+		return this._links;
+	}
+	
+	_render() {
+		this.shadow.innerHTML = '';
 		
-		// Create the navbar structure
+		const navigationRoot = this._createNavigationElement();
+		
+		this._attachAppName(navigationRoot);
+		this._attachLinks(navigationRoot);
+		this._attachStyle();
+
+		this.shadow.appendChild(navigationRoot);
+	}
+
+	_createNavigationElement()
+	{
 		const nav = document.createElement('nav');
-		nav.classList.add('navbar');
-		
-		// Create brand/logo link
-		const brandLink = document.createElement('a');
-		brandLink.textContent = 'Quizzer';
-		brandLink.href = '#';
-		
-		// Create links container
-		const linksContainer = document.createElement('div');
-		linksContainer.classList.add('navbar-links');
-		
-		// Create login link
-		const loginLink = document.createElement('a');
-		loginLink.textContent = 'Влизане';
-		loginLink.href = '#';
-		
-		// Create register link
-		const registerLink = document.createElement('a');
-		registerLink.textContent = 'Регистрация';
-		registerLink.href = '#';
-		
-		// Append links to container
-		linksContainer.appendChild(loginLink);
-		linksContainer.appendChild(registerLink);
-		
-		// Append elements to nav
-		nav.appendChild(brandLink);
-		nav.appendChild(linksContainer);
-		
+		nav.id = 'navbar';
+		return nav;
+	}
+	_attachStyle()
+	{
 		const style = document.createElement('style');
 		style.textContent = `
-			.navbar {
+			#navbar {
 				width: 100vw;
 				margin: 0;
 				padding: 0.5em 2em;
@@ -57,35 +70,83 @@ class NavBar extends HTMLElement {
 				backdrop-filter: blur(10px);
 			}
 
-			.navbar a {
+			#navbar a {
 				color: #FFF4F8;
 				text-decoration: none;
 				font-size: 1.1em;
 				margin-left: 1.5em;
 				margin-right: 0;
 				cursor: pointer;
+				padding: 0.5em 1em;
+				border-radius: 0.5em;
+				transition: background-color 0.3s ease;
 			}
 			
-			.navbar a:first-child {
+			#navbar a:hover {
+				background-color: rgba(255, 244, 248, 0.1);
+			}
+			
+			#navbar a.active {
+				background-color: rgba(255, 244, 248, 0.2);
+				font-weight: bold;
+			}
+			
+			#navbar a:first-child {
 				margin-left: 0;
 				margin-right: auto;
 				font-weight: bold;
 				font-size: 1.3em;
 			}
+			
+			#navbar a:first-child:hover {
+				background-color: transparent;
+			}
 
-			.navbar-links {
+			#navbar-links {
 				display: flex;
 				align-items: center;
-				gap: 1.5em;
+				gap: 0.5em;
 			}
 
-			.navbar a:last-child {
-				margin-right: 0;
+			#navbar-links a {
+				margin: 0;
 			}
 		`;
+
+		this.shadow.appendChild(style);
+	}
+
+	_attachAppName(navigationRoot)
+	{
+		const appNameLink = document.createElement('a');
+		appNameLink.textContent = 'Quizzer';
+		appNameLink.href = '/';
+		navigationRoot.appendChild(appNameLink);
+	}
+
+	_attachLinks(navigationRoot)
+	{
+		const linksContainer = document.createElement('div');
+		linksContainer.classList.add('navbar-links');
 		
-		shadow.appendChild(style);
-		shadow.appendChild(nav);
+		// Get active page from attribute
+		const activePage = this.getAttribute('active');
+		
+		// Create navigation links from the links array
+		this._links.forEach(link => {
+			const anchor = document.createElement('a');
+			anchor.textContent = link.text;
+			anchor.href = link.href;
+			
+			// Add active class if this link matches the active attribute
+			if (activePage && (link.href === activePage || link.text === activePage)) {
+				anchor.classList.add('active');
+			}
+			
+			linksContainer.appendChild(anchor);
+		});
+
+		navigationRoot.appendChild(linksContainer);
 	}
 }
 

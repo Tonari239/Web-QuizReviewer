@@ -6,11 +6,21 @@
 		<link rel="stylesheet" href="registration-form.css">
 		<script type="module" src="../common/reused-components/nav-bar/navbar.js"></script>
 		<script src="registration-form.js" defer></script>
+		<script>
+			// Configure navbar links
+			document.addEventListener('DOMContentLoaded', () => {
+				const navbar = document.querySelector('quiz-navbar');
+				navbar.links = [
+					{ text: 'Влизане', href: '../login-form/login-form.html' },
+					{ text: 'Регистрация', href: '../registration-form/registration-form.html' }
+				];
+			});
+		</script>
 	</head>
 		
 	<body>
 		<header>
-			<quiz-navbar></quiz-navbar>
+			<quiz-navbar active="Регистрация"></quiz-navbar>
 		</header>
 		<section id="form-section">
 			<h1 id="registerHeader">Регистрация</h1>
