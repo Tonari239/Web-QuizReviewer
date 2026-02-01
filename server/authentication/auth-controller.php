@@ -1,23 +1,13 @@
 <?php
-// authentication.php - Handles user authentication (register, login, logout)
+require_once __DIR__ . '/models/user.php';
+require_once __DIR__ . '/models/userError.php';
+require_once __DIR__ . '/../database/databaseManager.php';
 
-// Enable error reporting for development (disable in production)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Set headers for CORS and JSON response
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // Change * to your frontend domain in production
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
-
-require_once 'db_config.php';
-require_once './models/user.php';
 class AuthenticationController
 {
     private $dbManager;
 
-    public function __construct(Type $var = null) {
+    public function __construct() {
         $this->dbManager = new DatabaseManager();
     }
 
@@ -86,7 +76,7 @@ class AuthenticationController
 
     private function verifyUserPassword($user) {
         $userToVerifyAgainst = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
-        return password_verify($user->getPasswordHash(), $userToVerifyAgainst['password_hash'])
+        return password_verify($user->getPasswordHash(), $userToVerifyAgainst['password_hash']);
     }
 }
 ?>

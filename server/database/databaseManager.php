@@ -1,7 +1,10 @@
 <?php
-class DatabaseManager()
+require_once __DIR__ . '/models/dbConfig.php';
+
+class DatabaseManager
 {
     private $config;
+
 	public function __construct() {
 		$this->config = new DatabaseConfig();
 	}
@@ -9,7 +12,7 @@ class DatabaseManager()
     public function insertIntoTable($table, $data)
     {
         try {
-            $pdo = $this->getDbConnection();
+            $pdo = $this->config->getDbConnection();
             $columns = implode(", ", array_keys($data));
             $placeholders = implode(", ", array_fill(0, count($data), "?"));
             $stmt = $pdo->prepare("INSERT INTO $table ($columns) VALUES ($placeholders)");
@@ -24,7 +27,7 @@ class DatabaseManager()
     public function findWhere($table, $columns, $values)
     {
         try {
-            $pdo = $this->getDbConnection();
+            $pdo = $this->config->getDbConnection();
             $conditions = [];
             foreach ($columns as $column) {
                 $conditions[] = "$column = ?";
@@ -36,23 +39,6 @@ class DatabaseManager()
         } catch (PDOException $e) {
             error_log("Database error in findWhere: " . $e->getMessage());
             throw new Exception("Database error occurred");
-        }
-    }
-
-    private function getDbConnection()
-    {
-        try {
-            $dsn = "mysql:host={$this->config->DB_HOST};dbname={$this->config->DB_NAME};charset=utf8mb4";
-            $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
-            ];
-            $pdo = new PDO($dsn, $this->config->DB_USER, $this->config->DB_PASS, $options);
-            return $pdo;
-        } catch (PDOException $e) {
-            error_log("Database connection error: " . $e->getMessage());
-            throw new Exception("Database connection failed");
         }
     }
 }
