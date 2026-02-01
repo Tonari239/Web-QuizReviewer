@@ -1,7 +1,6 @@
-import { validateUsername, validateEmail, validatePassword } from '../common/reused-scripts/form-validators.js';
+import { validateEmail, validatePassword } from '../common/reused-scripts/form-validators.js';
 
 const validators = [
-	validateUsername,
 	validateEmail,
 	validatePassword,
 ];
