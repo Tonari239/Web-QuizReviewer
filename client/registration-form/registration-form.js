@@ -7,7 +7,7 @@ const validators = [
 	validatePassword,
 ];
 
-const router = new Router();
+const router = await Router.create();
 async function sendForm()
 {
 	let errorsCount = 0;
@@ -48,21 +48,30 @@ async function registerUser()
 {
 	const registerEndpoint = router.getRegisterEndpoint();
 
-	await fetch(registerEndpoint, {
+	const response = await fetch(registerEndpoint, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify(convertUserRegisterDataFormInputToJson())
-	}).then(response => {
+	});
+
+	const text = await response.text();
+	
+	if (!text || text.trim() === '') {
 		if (!response.ok) {
-			throw new Error(response.message || "Failed to register user");
+			throw new Error("Server returned empty response with status: " + response.status);
 		}
-		else
-		{
-			return response.json();
-		}
-	})
+		return { message: "Success" };
+	}
+
+	const data = JSON.parse(text);
+	
+	if (!response.ok) {
+		throw new Error(data.errorMessage || "Failed to register user");
+	}
+	
+	return data;
 }
 
 function convertUserRegisterDataFormInputToJson()

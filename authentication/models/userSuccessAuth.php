@@ -1,5 +1,5 @@
 <?php
-class UserSuccessAuth
+class UserSuccessAuth implements JsonSerializable
 {
 	private $message;
 
@@ -11,6 +11,13 @@ class UserSuccessAuth
 	public function getMessage()
 	{
 		return $this->message;
+	}
+
+	public function jsonSerialize()
+	{
+		return [
+			'message' => $this->message
+		];
 	}
 }
 ?>

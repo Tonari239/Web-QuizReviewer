@@ -1,4 +1,9 @@
 <?php
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Enable CORS for frontend communication
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
@@ -40,8 +45,9 @@ class Application
 			}
 			echo $this->authController->loginUser();
 		} else {
-			http_response_code(404);
-			echo json_encode(["error" => "Endpoint not found"]);
+			header('Content-Type: text/html');
+			header('Location: /client/registration-form/registration-form.html');
+			exit();
 		}
 	}
 }

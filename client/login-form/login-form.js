@@ -1,7 +1,7 @@
 import { validateEmail, validatePassword } from '../common/reused-scripts/form-validators.js';
 import { Router } from '../common/reused-scripts/router.js';
 
-const router = new Router();
+const router = await Router.create();
 
 const validators = [
 	validateEmail,

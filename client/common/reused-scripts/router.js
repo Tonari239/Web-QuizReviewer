@@ -1,24 +1,34 @@
-import appConfig from "../../clientConfig.json" assert { type: "json" };
 
-class Router
-{
-	constructor()
-	{
-		this._baseUrl = appConfig.serverUrl || 'http://localhost/Web-QuizReviewer/server/'
+let appConfig = null;
+
+async function loadAppConfig() {
+    if (!appConfig) {
+		const response = await fetch("/client/clientConfig.json");
+		if (!response.ok) {
+			throw new Error("Failed to load clientConfig.json");
+		}
+		appConfig = await response.json();
+    }
+    return appConfig;
+}
+
+export class Router {
+	constructor(baseUrl) {
+		this._baseUrl = baseUrl;
 	}
 
-	getLoginEndpoint()
-	{
-		return this._getAuthenticationControllerEndpoint()+"?loginUser";
+	static async create() {
+		const config = await loadAppConfig();
+		const baseUrl = config.serverUrl || 'http://localhost/index.php';
+		return new Router(baseUrl);
 	}
 
-	getRegisterEndpoint()
-	{
-		return this._getAuthenticationControllerEndpoint()+"?registerUser";
+	getLoginEndpoint() {
+		return this._baseUrl + "?loginUser";
 	}
 
-	_getAuthenticationControllerEndpoint()
-	{
-		return this._baseUrl + 'authentication/auth-controller.php';
+	getRegisterEndpoint() {
+		return this._baseUrl + "?registerUser";
 	}
+
 }

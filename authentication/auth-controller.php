@@ -1,4 +1,9 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
+
 require_once __DIR__ . '/models/user.php';
 require_once __DIR__ . '/models/userError.php';
 require_once __DIR__ . '/models/userSuccessAuth.php';
@@ -14,15 +19,8 @@ class AuthenticationController
 
     public function registerUser()
     {
-        // Using file_get_contents('php://input') is the correct way to read raw POST data
         $data = json_decode(file_get_contents('php://input'), true);
-        $user = null; 
-        try {
-           $user = new User($data['username'], $data['email'], $data['password']);
-        } catch (Exception $e) {
-            http_response_code(400);
-            return json_encode(new UserError("Invalid password"));
-        }
+        $user = new User($data['username'], $data['email'], $data['password'], null);
         
         if(!$user->isUserValidForRegister()) {
             http_response_code(400);
@@ -34,7 +32,7 @@ class AuthenticationController
             return json_encode(new UserError("User already exists"));
         }
 
-        $this->dbManager->insertIntoTable('users', $user->toArray());
+        $this->dbManager->insertIntoTable('users', $user->toKeyValuePairs());
         http_response_code(200);
         return json_encode(new UserSuccessAuth("User registered successfully"));
     }
@@ -42,13 +40,7 @@ class AuthenticationController
     public function loginUser()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        $user = null; 
-        try {
-           $user = new User($data['username'], $data['email'], $data['password']);
-        } catch (Exception $e) {
-            http_response_code(400);
-            return json_encode(new UserError("Invalid password"));
-        }
+        $user = new User(null, $data['email'], $data['password'], null);
 
         if(!$user->isUserValidForLogin()) {
             http_response_code(400);
@@ -73,13 +65,12 @@ class AuthenticationController
     }
 
     private function userAlreadyExists($user) {
-       $result = $this->dbManager->findWhere('users',['username'], [$user->getUsername()]);
+       $result = $this->dbManager->findWhere('users',['email'], [$user->getEmail()]);
        return ($result != null);
     }
 
     private function verifyUserPassword($user) {
         $userToVerifyAgainst = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
-        return password_verify($user->getPasswordHash(), $userToVerifyAgainst['password_hash']);
+        return password_verify($user->getPassword(), $userToVerifyAgainst['password_hash']);
     }
 }
-?>

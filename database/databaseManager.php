@@ -9,6 +9,7 @@ class DatabaseManager
 		$this->config = new DatabaseConfig();
 	}
 
+    //Data is associative array that goes by column -> columnValue
     public function insertIntoTable($table, $data)
     {
         try {
