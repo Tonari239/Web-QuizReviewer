@@ -51,7 +51,7 @@ function showErrorMessage(errorMsg)
 	const errorMessage = errorMsg || "Грешка при регистриране!";
 	formMessageLabel.innerText = errorMessage;
 	formMessageLabel.className = "error";
-	formMessageLabel.style.display = "inline-block";
+	formMessageLabel.style.display = "inline";
 }
 
 function showSuccessMessage(successMsg)
