@@ -39,6 +39,8 @@ class AuthenticationController
 
     public function loginUser()
     {
+        session_start();
+
         $data = json_decode(file_get_contents('php://input'), true);
         $user = new User(null, $data['email'], $data['password'], null);
 
@@ -54,7 +56,11 @@ class AuthenticationController
 
         if($this->verifyUserPassword($user)) {
             http_response_code(200);
-            return json_encode(new UserSuccessAuth("Login successful"));
+
+            $userRecord = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
+            $_SESSION['username'] = $userRecord['username'];
+            // Return username and guid for display only
+            return json_encode(new UserSuccessAuth());
         }
         else
         {
