@@ -22,8 +22,16 @@ async function sendForm()
 	{
 		await registerUser().then((response) =>
 		{
-			showSuccessMessage(response.message);
-			window.location.replace(router.getLoginEndpoint());
+			if(response.status !== 200)
+			{
+				showErrorMessage(response.message);
+			}
+			else
+			{
+				showSuccessMessage(response.message);
+				router.redirectTo(router.getLoginEndpoint());
+			}
+			
 		}).catch((error) => 
 		{
 			console.error("Error:", error);
@@ -39,47 +47,32 @@ async function sendForm()
 function showErrorMessage(errorMsg)
 {
 	let formMessageLabel = document.getElementById("formSentResultDisplay");
-	const errorMessage = errorMsg || "Грешка при влизане!";
+	const errorMessage = errorMsg || "Грешка при регистриране!";
 	formMessageLabel.innerText = errorMessage;
 	formMessageLabel.className = "error";
+	formMessageLabel.style.display = "inline-block";
 }
 
 function showSuccessMessage(successMsg)
 {
 	let formMessageLabel = document.getElementById("formSentResultDisplay");
-	const successMessage = successMsg || "Успешно влизане!";
+	const successMessage = successMsg || "Успешно регистриране!";
 	formMessageLabel.innerText = successMessage;
 	formMessageLabel.className = "success";
+	formMessageLabel.style.display = "inline-block";
 }
 
 async function registerUser()
 {
 	const registerEndpoint = router.getRegisterEndpoint();
 
-	const response = await fetch(registerEndpoint, {
+	return fetch(registerEndpoint, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify(convertUserRegisterDataFormInputToJson())
 	});
-
-	const text = await response.text();
-	
-	if (!text || text.trim() === '') {
-		if (!response.ok) {
-			throw new Error("Server returned empty response with status: " + response.status);
-		}
-		return { message: "Success" };
-	}
-
-	const data = JSON.parse(text);
-	
-	if (!response.ok) {
-		throw new Error(data.errorMessage || "Failed to register user");
-	}
-	
-	return data;
 }
 
 function convertUserRegisterDataFormInputToJson()

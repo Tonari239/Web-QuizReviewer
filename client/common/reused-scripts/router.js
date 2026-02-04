@@ -35,4 +35,9 @@ export class Router {
 		return this._baseUrl + "?registerUser";
 	}
 
+	redirectTo(url) 
+	{
+		window.location.replace(url);
+	}
+
 }

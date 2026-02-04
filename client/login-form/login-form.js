@@ -20,11 +20,18 @@ async function sendForm()
 	const formIsValid = errorsCount === 0;
 	if (formIsValid)
 	{
-		await loginUser().then((result) =>
+		await loginUser().then((response) =>
 		{
-			showSuccessMessage(result.message);
-			localStorage.setItem("username", result.username);
-			window.location.replace(router.getHomePageUrl());
+			if(response.status !== 200)
+			{
+				showErrorMessage(response.message);
+			}
+			else
+			{
+				localStorage.setItem("username", response.username);
+				showSuccessMessage(response.message);
+				router.redirectTo(router.getHomePageUrl());
+			}
 		}).catch((error) => 
 		{
 			console.error("Error:", error);
@@ -41,7 +48,7 @@ async function loginUser()
 {
 	const loginEndpoint = router.getLoginEndpoint();
 
-	await fetch(loginEndpoint, {
+	return fetch(loginEndpoint, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -72,6 +79,7 @@ function showErrorMessage(errorMsg)
 	const errorMessage = errorMsg || "Грешка при влизане!";
 	formMessageLabel.innerText = errorMessage;
 	formMessageLabel.className = "error";
+	formMessageLabel.style.display = "inline-block";
 }
 
 function showSuccessMessage(successMsg)
@@ -80,6 +88,7 @@ function showSuccessMessage(successMsg)
 	const successMessage = successMsg || "Успешно влизане!";
 	formMessageLabel.innerText = successMessage;
 	formMessageLabel.className = "success";
+	formMessageLabel.style.display = "inline-block";
 }
 
 document.getElementById("login-btn").onclick = async () => {

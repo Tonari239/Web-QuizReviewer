@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/models/user.php';
 require_once __DIR__ . '/models/userAuthenticationError.php';
@@ -24,17 +24,17 @@ class AuthenticationController
         
         if(!$user->isUserValidForRegister()) {
             http_response_code(400);
-            return json_encode(new UserAuthenticationError("Невалидни потребителски данни за регистрация"));
+            return json_encode(new UserAuthenticationError("Невалидни потребителски данни за регистрация"), JSON_UNESCAPED_UNICODE);
         }
 
         if($this->userAlreadyExists($user)) {
             http_response_code(409);
-            return json_encode(new UserAuthenticationError("Потребителят вече съществува"));
+            return json_encode(new UserAuthenticationError("Потребителят вече съществува"), JSON_UNESCAPED_UNICODE);
         }
 
         $this->dbManager->insertIntoTable('users', $user->toKeyValuePairs());
         http_response_code(200);
-        return json_encode(new UserSuccessAuth("Потребителят е регистриран успешно"));
+        return json_encode(new UserSuccessAuth("Потребителят е регистриран успешно"), JSON_UNESCAPED_UNICODE);
     }
 
     public function loginUser()
@@ -46,12 +46,12 @@ class AuthenticationController
 
         if(!$user->isUserValidForLogin()) {
             http_response_code(400);
-            return json_encode(new UserAuthenticationError("Невалидни потребителски данни за вписване"));
+            return json_encode(new UserAuthenticationError("Невалидни потребителски данни за вписване"), JSON_UNESCAPED_UNICODE);
         }
 
         if(!$this->userAlreadyExists($user)) {
             http_response_code(400);
-            return json_encode(new UserAuthenticationError("Потребителят не съществува"));
+            return json_encode(new UserAuthenticationError("Потребителят не съществува"), JSON_UNESCAPED_UNICODE);
         }
 
         if($this->verifyUserPassword($user)) {
@@ -59,12 +59,12 @@ class AuthenticationController
 
             $userRecord = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
             $_SESSION['username'] = $userRecord['username'];
-            return json_encode(new UserSuccessAuth("Потребителят се вписа успешно"));
+            return json_encode(new UserSuccessAuth("Потребителят се вписа успешно"), JSON_UNESCAPED_UNICODE);
         }
         else
         {
             http_response_code(401);
-            return json_encode(new UserAuthenticationError("Невалидна парола"));
+            return json_encode(new UserAuthenticationError("Невалидна парола"), JSON_UNESCAPED_UNICODE);
         }
 
     }
