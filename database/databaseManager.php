@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/models/dbConfig.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 class DatabaseManager
 {
     private $config;
@@ -21,7 +25,7 @@ class DatabaseManager
             return $pdo->lastInsertId();
         } catch (PDOException $e) {
             error_log("Database error in insertIntoTable: " . $e->getMessage());
-            throw new Exception("Database error occurred");
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -39,7 +43,7 @@ class DatabaseManager
             return $stmt->fetch();
         } catch (PDOException $e) {
             error_log("Database error in findWhere: " . $e->getMessage());
-            throw new Exception("Database error occurred");
+            throw new Exception($e->getMessage());
         }
     }
 }

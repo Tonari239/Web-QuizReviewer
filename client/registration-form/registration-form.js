@@ -30,7 +30,7 @@ async function sendForm()
 			else
 			{
 				showSuccessMessage(responseData.message);
-				router.redirectTo(router.getLoginEndpoint());
+				router.redirectTo("../login-form/login-form.html");
 			}
 			
 		}).catch((error) => 
