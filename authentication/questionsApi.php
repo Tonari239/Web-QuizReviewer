@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/models/userAuthenticationError.php';
+
 session_start();
 
 //TODO: Replace with real data retrieval logic
@@ -6,7 +8,7 @@ session_start();
 // checking for the user guid in the session
 if (!isset($_SESSION['guid'])) {
     http_response_code(401);
-    echo json_encode(['error' => 'Unauthorized: Please log in.']);
+    echo json_encode(new UserAuthenticationError("Unauthorized: Please log in."));
     exit();
 }
 

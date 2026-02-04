@@ -23,6 +23,10 @@ export class Router {
 		return new Router(baseUrl);
 	}
 
+	getHomePageUrl() {
+		return this._baseUrl + "?homePage";
+	}
+		
 	getLoginEndpoint() {
 		return this._baseUrl + "?loginUser";
 	}

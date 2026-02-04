@@ -20,10 +20,11 @@ async function sendForm()
 	const formIsValid = errorsCount === 0;
 	if (formIsValid)
 	{
-		await loginUser().then(() =>
+		await loginUser().then((result) =>
 		{
-			const validFormLabel = document.getElementById('success');
-			validFormLabel.style.display = "inline";
+			showSuccessMessage(result.message);
+			localStorage.setItem("username", result.username);
+			window.location.replace(router.getHomePageUrl());
 		}).catch((error) => 
 		{
 			console.error("Error:", error);
@@ -48,7 +49,7 @@ async function loginUser()
 		body: JSON.stringify(convertUserLoginDataFormInputToJson())
 	}).then(response => {
 		if (!response.ok) {
-			throw new Error(response.message || "Failed to login user");
+			throw new Error(response.message);
 		}
 		else
 		{
@@ -65,12 +66,20 @@ function convertUserLoginDataFormInputToJson()
 	}
 }
 
-function showErrorMessage(errorMessage)
+function showErrorMessage(errorMsg)
 {
-	const validFormLabel = document.getElementById('success');
-	validFormLabel.style.display = "none";
+	let formMessageLabel = document.getElementById("formSentResultDisplay");
+	const errorMessage = errorMsg || "Грешка при влизане!";
+	formMessageLabel.innerText = errorMessage;
+	formMessageLabel.className = "error";
+}
 
-	alert(errorMessage);
+function showSuccessMessage(successMsg)
+{
+	let formMessageLabel = document.getElementById("formSentResultDisplay");
+	const successMessage = successMsg || "Успешно влизане!";
+	formMessageLabel.innerText = successMessage;
+	formMessageLabel.className = "success";
 }
 
 document.getElementById("login-btn").onclick = async () => {

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quizzer</title>
+		<meta charset="UTF-8">
+		<script type="module" src="../common/reused-components/nav-bar/navbar.js"></script>
+		<script>
+			// Configure navbar links
+			document.addEventListener('DOMContentLoaded', () => {
+				const navbar = document.querySelector('quiz-navbar');
+				navbar.links = [
+					{ text: 'Влизане', href: './login-form/login-form.html' },
+					{ text: 'Регистрация', href: './registration-form/registration-form.html' }
+				];
+			});
+		</script>
+	</head>
+		
+	<body>
+		<header>
+			<quiz-navbar></quiz-navbar>
+		</header>
+		<h6>HELLOOOOOO </h6>
+	</body>
+</html>

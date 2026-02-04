@@ -70,7 +70,7 @@ form
 	margin-top: 0.25em;
 }
 
-#success
+.success
 {
 	color:rgb(152, 228, 152);
 	display: none;

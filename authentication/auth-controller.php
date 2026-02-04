@@ -5,7 +5,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
 
 require_once __DIR__ . '/models/user.php';
-require_once __DIR__ . '/models/userError.php';
+require_once __DIR__ . '/models/userAuthenticationError.php';
 require_once __DIR__ . '/models/userSuccessAuth.php';
 require_once __DIR__ . '/../database/databaseManager.php';
 
@@ -24,12 +24,12 @@ class AuthenticationController
         
         if(!$user->isUserValidForRegister()) {
             http_response_code(400);
-            return json_encode(new UserError("Invalid user data for registration"));
+            return json_encode(new UserAuthenticationError("Invalid user data for registration"));
         }
 
         if($this->userAlreadyExists($user)) {
             http_response_code(409);
-            return json_encode(new UserError("User already exists"));
+            return json_encode(new UserAuthenticationError("User already exists"));
         }
 
         $this->dbManager->insertIntoTable('users', $user->toKeyValuePairs());
@@ -46,7 +46,7 @@ class AuthenticationController
 
         if(!$user->isUserValidForLogin()) {
             http_response_code(400);
-            return json_encode(new UserError("Invalid user data for login"));
+            return json_encode(new UserAuthenticationError("Invalid user data for login"));
         }
 
         if(!$this->userAlreadyExists($user)) {
@@ -59,7 +59,6 @@ class AuthenticationController
 
             $userRecord = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
             $_SESSION['username'] = $userRecord['username'];
-            // Return username and guid for display only
             return json_encode(new UserSuccessAuth());
         }
         else

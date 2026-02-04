@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../common_models/IDbSerializable.php';
-class UserError implements JsonSerializable
+class UserAuthenticationError implements JsonSerializable
 {
 	private $message;
 
