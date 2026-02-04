@@ -1,0 +1,95 @@
+body {
+	background: url("../../img_resources/login_reg_background.png") no-repeat center center fixed;
+	background-size: cover;
+}
+
+.input-container
+{
+	margin-bottom: 10px;
+}
+
+.input-container > *
+{
+	display: block;
+}
+
+*
+{
+	color: #FFF4F8;
+	font-family: 'Inter', sans-serif;
+}
+
+input
+{
+	color: rgb(37, 34, 34);
+	height: 1.5rem;
+	border-radius: 10px;
+	margin-top: 0.5rem;
+}
+
+input:focus {
+    outline: none !important;
+    border:2px solid #420420;
+    box-shadow: 0 0 10px #FFF4F8;
+}
+
+form
+{
+	background-color: #420420;
+	padding: 2em;
+	border-radius: 2em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#loginHeader
+{
+	color: #420420;
+	margin-top: 2rem;
+}
+
+#login-btn
+{
+	background-color: #FFF4F8;
+	color: #420420;
+	border: none;
+	padding: 0.5em 2em;
+	border-radius: 1em;
+	cursor: pointer;
+	margin-top: 5rem;
+}
+
+.error {
+	color: red;
+	display: none;
+	max-width: 11rem;
+	white-space: normal;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	margin-top: 0.25em;
+}
+
+.success
+{
+	color:rgb(152, 228, 152);
+	display: none;
+}
+
+.container {
+	display: flex;
+	background-color: #420420;
+	color: #FFF4F8;
+}
+
+#form-section{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+body {
+	margin: 0;
+	padding-top: 3rem;
+	margin-top: 5rem;
+}
