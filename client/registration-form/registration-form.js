@@ -20,10 +20,10 @@ async function sendForm()
 	const formIsValid = errorsCount === 0;
 	if (formIsValid)
 	{
-		await registerUser().then(() =>
+		await registerUser().then((response) =>
 		{
-			const validFormLabel = document.getElementById('success');
-			validFormLabel.style.display = "inline";
+			showSuccessMessage(response.message);
+			window.location.replace(router.getLoginEndpoint());
 		}).catch((error) => 
 		{
 			console.error("Error:", error);
@@ -36,12 +36,20 @@ async function sendForm()
 	}
 }
 
-function showErrorMessage(errorMessage)
+function showErrorMessage(errorMsg)
 {
-	const validFormLabel = document.getElementById('success');
-	validFormLabel.style.display = "none";
+	let formMessageLabel = document.getElementById("formSentResultDisplay");
+	const errorMessage = errorMsg || "Грешка при влизане!";
+	formMessageLabel.innerText = errorMessage;
+	formMessageLabel.className = "error";
+}
 
-	alert(errorMessage);
+function showSuccessMessage(successMsg)
+{
+	let formMessageLabel = document.getElementById("formSentResultDisplay");
+	const successMessage = successMsg || "Успешно влизане!";
+	formMessageLabel.innerText = successMessage;
+	formMessageLabel.className = "success";
 }
 
 async function registerUser()

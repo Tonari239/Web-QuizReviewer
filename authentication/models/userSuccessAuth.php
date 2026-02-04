@@ -3,7 +3,7 @@ class UserSuccessAuth implements JsonSerializable
 {
 	private $message;
 
-	public function __construct($message="User logged in successfully!")
+	public function __construct($message)
 	{
 		$this->message = $message;
 	}
@@ -15,6 +15,10 @@ class UserSuccessAuth implements JsonSerializable
 
 	public function jsonSerialize()
 	{
+		$username = "";
+		if(isset($_SESSION) && isset($_SESSION['username'])) {
+			$username = $_SESSION['username'];
+		}
 		return [
 			'username' => $_SESSION['username'],
 			'message' => $this->message

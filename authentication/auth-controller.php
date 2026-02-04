@@ -24,17 +24,17 @@ class AuthenticationController
         
         if(!$user->isUserValidForRegister()) {
             http_response_code(400);
-            return json_encode(new UserAuthenticationError("Invalid user data for registration"));
+            return json_encode(new UserAuthenticationError("Невалидни потребителски данни за регистрация"));
         }
 
         if($this->userAlreadyExists($user)) {
             http_response_code(409);
-            return json_encode(new UserAuthenticationError("User already exists"));
+            return json_encode(new UserAuthenticationError("Потребителят вече съществува"));
         }
 
         $this->dbManager->insertIntoTable('users', $user->toKeyValuePairs());
         http_response_code(200);
-        return json_encode(new UserSuccessAuth("User registered successfully"));
+        return json_encode(new UserSuccessAuth("Потребителят е регистриран успешно"));
     }
 
     public function loginUser()
@@ -46,12 +46,12 @@ class AuthenticationController
 
         if(!$user->isUserValidForLogin()) {
             http_response_code(400);
-            return json_encode(new UserAuthenticationError("Invalid user data for login"));
+            return json_encode(new UserAuthenticationError("Невалидни потребителски данни за вписване"));
         }
 
         if(!$this->userAlreadyExists($user)) {
             http_response_code(400);
-            return json_encode(new UserError("User does not exist"));
+            return json_encode(new UserAuthenticationError("Потребителят не съществува"));
         }
 
         if($this->verifyUserPassword($user)) {
@@ -59,12 +59,12 @@ class AuthenticationController
 
             $userRecord = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
             $_SESSION['username'] = $userRecord['username'];
-            return json_encode(new UserSuccessAuth());
+            return json_encode(new UserSuccessAuth("Потребителят се вписа успешно"));
         }
         else
         {
             http_response_code(401);
-            return json_encode(new UserError("Invalid password"));
+            return json_encode(new UserAuthenticationError("Невалидна парола"));
         }
 
     }

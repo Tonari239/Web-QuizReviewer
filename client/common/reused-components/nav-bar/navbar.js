@@ -75,6 +75,7 @@ class NavBar extends HTMLElement {
 				text-decoration: none;
 				font-size: 1.1em;
 				margin-left: 1.5em;
+				font-family: 'Inter', sans-serif;
 				margin-right: 0;
 				cursor: pointer;
 				padding: 0.5em 1em;
