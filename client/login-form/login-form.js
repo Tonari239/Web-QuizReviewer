@@ -20,16 +20,17 @@ async function sendForm()
 	const formIsValid = errorsCount === 0;
 	if (formIsValid)
 	{
-		await loginUser().then((response) =>
+		await loginUser().then(async (response) =>
 		{
+			const responseData = await response.json();
 			if(response.status !== 200)
 			{
-				showErrorMessage(response.message);
+				showErrorMessage(responseData.message);
 			}
 			else
 			{
-				localStorage.setItem("username", response.username);
-				showSuccessMessage(response.message);
+				localStorage.setItem("username", responseData.username);
+				showSuccessMessage(responseData.message);
 				router.redirectTo(router.getHomePageUrl());
 			}
 		}).catch((error) => 

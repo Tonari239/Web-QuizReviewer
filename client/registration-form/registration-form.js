@@ -20,15 +20,16 @@ async function sendForm()
 	const formIsValid = errorsCount === 0;
 	if (formIsValid)
 	{
-		await registerUser().then((response) =>
+		await registerUser().then(async (response) =>
 		{
+			const responseData = await response.json();
 			if(response.status !== 200)
 			{
-				showErrorMessage(response.message);
+				showErrorMessage(responseData.message);
 			}
 			else
 			{
-				showSuccessMessage(response.message);
+				showSuccessMessage(responseData.message);
 				router.redirectTo(router.getLoginEndpoint());
 			}
 			

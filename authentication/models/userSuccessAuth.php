@@ -15,12 +15,14 @@ class UserSuccessAuth implements JsonSerializable
 
 	public function jsonSerialize()
 	{
-		$username = "";
 		if(isset($_SESSION) && isset($_SESSION['username'])) {
-			$username = $_SESSION['username'];
-		}
-		return [
+			return [
 			'username' => $_SESSION['username'],
+			'message' => $this->message
+		  ];
+		}
+
+		return [
 			'message' => $this->message
 		];
 	}
