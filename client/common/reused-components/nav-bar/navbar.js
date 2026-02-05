@@ -136,12 +136,24 @@ class NavBar extends HTMLElement {
 			if (activePage && (link.href === activePage || link.text === activePage)) {
 				anchor.classList.add('active');
 			}
+
+			
+			//Logout logic
+			if (link.href === '#logout') {
+				anchor.addEventListener('click', (e) => {
+					e.preventDefault();
+					this.dispatchEvent(new CustomEvent('logout', {
+						bubbles: true,
+						composed: true 
+					}));
+				});
+			}
 			
 			linksContainer.appendChild(anchor);
 		});
 
 		navigationRoot.appendChild(linksContainer);
-	}
+	}	
 }
 
 customElements.define('quiz-navbar', NavBar);

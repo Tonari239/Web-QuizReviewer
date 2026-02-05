@@ -13,7 +13,7 @@ class UserAuthenticationError implements JsonSerializable
 	{
 		return $this->message;
 	}
-
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize()
 	{
 		return [

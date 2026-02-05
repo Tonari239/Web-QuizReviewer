@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const header = document.getElementById('landingHeader');
     const navbar = document.querySelector('quiz-navbar');
-	const username = ''
+	const username = localStorage.getItem('username');
     //Add logic to retrieve username
 
 	if (username) {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		header.textContent = `Здравей, ${username} :)`;
         navbar.links = [
 			{ text: 'Профил', href: '#' },
-			{ text: 'Изход', href: '#', onclick: logout }
+			{ text: 'Изход', href: '#logout' }
 		];
 	} else {
 		//Not logged in
@@ -19,9 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		];
 		header.textContent = 'Здравей :)';
 	}
+
+	navbar.addEventListener('logout', () => {
+		localStorage.removeItem('username');
+		window.location.reload();
+	});
+
 });
 
-function logout() {
-	//Add actual logout
-	window.location.reload();
-}

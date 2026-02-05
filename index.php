@@ -52,11 +52,11 @@ class Application
 				return;
 			}
 			header('Content-Type: text/html');
-			header('Location: /client/home-page.html');
+			header('Location: /client/landing/landing.html');
 		}
 		 else {
 			header('Content-Type: text/html');
-			header('Location: /client/home-page.html');
+			header('Location: /client/landing/landing.html');
 			exit();
 		}
 	}

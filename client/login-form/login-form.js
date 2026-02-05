@@ -8,6 +8,7 @@ const validators = [
 	validatePassword,
 ];
 
+
 async function sendForm()
 {
 	let errorsCount = 0;
