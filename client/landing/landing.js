@@ -1,3 +1,7 @@
+import { Router } from '../common/reused-scripts/router.js';
+
+var router = new Router();
+
 document.addEventListener('DOMContentLoaded', () => {
 	const header = document.getElementById('landingHeader');
     const navbar = document.querySelector('quiz-navbar');
@@ -20,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		header.textContent = 'Здравей :)';
 	}
 
-	navbar.addEventListener('logout', () => {
+	navbar.addEventListener('logout',async () => {
 		localStorage.removeItem('username');
+		await fetch(router.getLogoutEndpoint(), { method: 'POST' });
 		window.location.reload();
 	});
 

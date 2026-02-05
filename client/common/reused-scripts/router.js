@@ -1,26 +1,6 @@
-
-let appConfig = null;
-
-async function loadAppConfig() {
-    if (!appConfig) {
-		const response = await fetch("/client/clientConfig.json");
-		if (!response.ok) {
-			throw new Error("Failed to load clientConfig.json");
-		}
-		appConfig = await response.json();
-    }
-    return appConfig;
-}
-
 export class Router {
-	constructor(baseUrl) {
-		this._baseUrl = baseUrl;
-	}
-
-	static async create() {
-		const config = await loadAppConfig();
-		const baseUrl = config.serverUrl || 'http://localhost/index.php';
-		return new Router(baseUrl);
+	constructor() {
+		this._baseUrl = 'https://localhost/index.php';
 	}
 
 	getHomePageUrl() {
@@ -35,8 +15,11 @@ export class Router {
 		return this._baseUrl + "?registerUser";
 	}
 
-	redirectTo(url) 
-	{
+	getLogoutEndpoint() {
+		return this._baseUrl + "?logoutUser";
+	}
+	
+	redirectTo(url) {
 		window.location.replace(url);
 	}
 
