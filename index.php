@@ -45,6 +45,14 @@ class Application
 			}
 			echo $this->authController->loginUser();
 		}
+		elseif (isset($_GET['logoutUser'])) {
+			if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+				http_response_code(405);
+				echo json_encode(["error" => "Method not allowed. Use POST."]);
+				return;
+			}
+			echo $this->authController->logoutUser();
+		}
 		elseif (isset($_GET['homePage'])) {
 			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 				http_response_code(405);

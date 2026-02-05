@@ -63,10 +63,19 @@ class AuthenticationController
         }
         else
         {
+            session_destroy();
             http_response_code(401);
             return json_encode(new UserAuthenticationError("Невалидна парола"), JSON_UNESCAPED_UNICODE);
         }
 
+    }
+
+    public function logoutUser()
+    {
+        session_start();
+        session_destroy();
+        http_response_code(200);
+        return json_encode(new UserSuccessAuth("Потребителят се изписа успешно"), JSON_UNESCAPED_UNICODE);
     }
 
     private function userAlreadyExists($user) {
