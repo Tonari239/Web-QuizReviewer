@@ -46,7 +46,9 @@ class Application
 			echo $this->authController->loginUser();
 		} else {
 			header('Content-Type: text/html');
-			header('Location: /client/registration-form/registration-form.html');
+			#header('Location: /client/registration-form/registration-form.html');
+			header('Location: /client/landing/landing.html');
+
 			exit();
 		}
 	}
