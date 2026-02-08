@@ -7,7 +7,7 @@ class DatabaseConfig
 	private $DB_PASS;
 
 	public function __construct() {
-		$configPath = __DIR__ . '/config.ini';
+        $configPath = __DIR__ . '/../../../setup/database-configuration.ini';
         if (!file_exists($configPath)) {
             throw new Exception('Database config file not found');
         }

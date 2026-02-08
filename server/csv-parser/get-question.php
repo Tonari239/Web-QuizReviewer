@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/CSV_Parser.php';
+require_once __DIR__ . '/CSV-Parser.php';
 
 header('Content-Type: application/json');
 

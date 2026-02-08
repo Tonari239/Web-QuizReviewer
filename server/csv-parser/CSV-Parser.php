@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../common_models/Question.php';
+require_once __DIR__ . '/../common-models/question.php';
 
-class CSV_Parser
+class CSVParser
 {  
     public static function extract(string $filePath): array
     {

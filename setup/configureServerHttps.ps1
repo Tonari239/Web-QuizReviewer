@@ -1,5 +1,5 @@
 
-$htaccessPath = "..\.htaccess"
+$htaccessPath = "../.htaccess"
 $htaccessContent = @"
 RewriteEngine On
 RewriteCond %{HTTPS} !=on

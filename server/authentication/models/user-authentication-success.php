@@ -1,5 +1,5 @@
 <?php
-class UserSuccessAuth implements JsonSerializable
+class UserAuthenticationSuccess implements JsonSerializable
 {
 	private $message;
 

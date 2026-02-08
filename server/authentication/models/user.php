@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../common_models/IDbSerializable.php';
+require_once __DIR__ . '/../../common-models/IDbSerializable.php';
 
 class User implements IDbSerializable
 {

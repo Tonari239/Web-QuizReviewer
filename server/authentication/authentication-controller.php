@@ -5,9 +5,9 @@ header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/models/user.php';
-require_once __DIR__ . '/models/userAuthenticationError.php';
-require_once __DIR__ . '/models/userSuccessAuth.php';
-require_once __DIR__ . '/../database/databaseManager.php';
+require_once __DIR__ . '/models/user-authentication-error.php';
+require_once __DIR__ . '/models/user-authentication-success.php';
+require_once __DIR__ . '/../database/database-manager.php';
 
 class AuthenticationController
 {
@@ -34,7 +34,7 @@ class AuthenticationController
 
         $this->dbManager->insertIntoTable('users', $user->toKeyValuePairs());
         http_response_code(200);
-        return json_encode(new UserSuccessAuth("Потребителят е регистриран успешно"), JSON_UNESCAPED_UNICODE);
+        return json_encode(new UserAuthenticationSuccess("Потребителят е регистриран успешно"), JSON_UNESCAPED_UNICODE);
     }
 
     public function loginUser()
@@ -59,7 +59,7 @@ class AuthenticationController
 
             $userRecord = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
             $_SESSION['username'] = $userRecord['username'];
-            return json_encode(new UserSuccessAuth("Потребителят се вписа успешно"), JSON_UNESCAPED_UNICODE);
+            return json_encode(new UserAuthenticationSuccess("Потребителят се вписа успешно"), JSON_UNESCAPED_UNICODE);
         }
         else
         {
@@ -75,7 +75,7 @@ class AuthenticationController
         session_start();
         session_destroy();
         http_response_code(200);
-        return json_encode(new UserSuccessAuth("Потребителят се изписа успешно"), JSON_UNESCAPED_UNICODE);
+        return json_encode(new UserAuthenticationSuccess("Потребителят се изписа успешно"), JSON_UNESCAPED_UNICODE);
     }
 
     private function userAlreadyExists($user) {
