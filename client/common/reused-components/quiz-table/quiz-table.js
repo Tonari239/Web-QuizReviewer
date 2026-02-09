@@ -13,8 +13,8 @@ class QuizTable extends HTMLElement {
 		
 		const tableRoot = this._createTableElement();
 		this._addTableHeaders(tableRoot);
-		this._attachRows(tableRoot);
-		//this._attachStyle();
+		this._addTableRows(tableRoot);
+		this._attachStyle();
 
 		this.shadow.appendChild(tableRoot);
 	}
@@ -80,60 +80,7 @@ class QuizTable extends HTMLElement {
 	_attachStyle()
 	{
 		const style = document.createElement('style');
-		style.textContent = `
-			#navbar {
-				width: 100vw;
-				margin: 0;
-				padding: 0.5em 2em;
-				border: none;
-				box-sizing: border-box;
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				z-index: 100;
-				display: flex;
-				height: 3.5rem;
-				justify-content: space-between;
-				align-items: center;
-				background: #420420;
-				backdrop-filter: blur(10px);
-			}
-
-			#navbar a {
-				color: #FFF4F8;
-				text-decoration: none;
-				font-size: 1.3em;
-				margin-left: 1.5em;
-				font-family: 'Inter', sans-serif;
-				margin-right: 0;
-				cursor: pointer;
-				padding: 0.5em 1em;
-				border-radius: 0.5em;
-				transition: background-color 0.3s ease;
-			}
-			
-			
-			#navbar a.active {
-				background-color: rgba(255, 244, 248, 0.2); 
-				font-weight: bold;
-			}
-			
-			#navbar a:first-child {
-				margin-left: 0;
-				margin-right: auto;
-			}
-			
-			#navbar-links {
-				display: flex;
-				align-items: center;
-				gap: 0.5em;
-			}
-
-			#navbar-links a {
-				margin: 0;
-			}
-		`;
+		style.textContent = ``;
 
 		this.shadow.appendChild(style);
 	}

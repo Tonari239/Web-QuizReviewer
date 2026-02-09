@@ -1,15 +1,20 @@
+import { Router } from '../common/reused-scripts/router.js';
+import { QuizTable } from '../common/reused-components/quiz-table/quiz-table.js';
+import { QuizPreview } from '../common/models/quiz-preview.js';
+import { ButtonCreatorCallback } from '../common/reused-scripts/button-creator-callback.js';
+
 const router = new Router();
 
 const deleteButton = new ButtonCreatorCallback("Изтрий", (quizId) => {
-	router.getDataApiEndpoint() + "/deleteQuiz/" + quizId
+	fetch(router.getDataApiEndpoint() + "/deleteQuiz/", new URLSearchParams({quizId: quizId}).toString());
 }, "../../Image_resources/Icons/trash-can.png");
 
 const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  () => {
-	router.getDataApiEndpoint() + "/exportQuiz/" + quizId
+	fetch(router.getDataApiEndpoint() + "/exportQuiz/", new URLSearchParams({quizId: quizId}).toString());
 }, "../../Image_resources/Icons/xml-file-format-symbol.png");
 
 const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензий", () => {
-	router.redirectTo("kuvto e url-a za recenzii") + quizId;
+	router.redirectTo("kuvto e url-a za recenzii");
 }, "../../Image_resources/Icons/eye.png");
 
 const quizPreviews = [
