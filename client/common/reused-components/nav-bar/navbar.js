@@ -73,7 +73,7 @@ class NavBar extends HTMLElement {
 			#navbar a {
 				color: #FFF4F8;
 				text-decoration: none;
-				font-size: 1.1em;
+				font-size: 1.3em;
 				margin-left: 1.5em;
 				font-family: 'Inter', sans-serif;
 				margin-right: 0;
@@ -85,15 +85,13 @@ class NavBar extends HTMLElement {
 			
 			
 			#navbar a.active {
-				background-color: rgba(255, 244, 248, 0.2);
+				background-color: rgba(255, 244, 248, 0.2); 
 				font-weight: bold;
 			}
 			
 			#navbar a:first-child {
 				margin-left: 0;
 				margin-right: auto;
-				font-weight: bold;
-				font-size: 1.3em;
 			}
 			
 			#navbar-links {
@@ -136,12 +134,24 @@ class NavBar extends HTMLElement {
 			if (activePage && (link.href === activePage || link.text === activePage)) {
 				anchor.classList.add('active');
 			}
+
+			
+			//Logout logic
+			if (link.href === '#logout') {
+				anchor.addEventListener('click', (e) => {
+					e.preventDefault();
+					this.dispatchEvent(new CustomEvent('logout', {
+						bubbles: true,
+						composed: true 
+					}));
+				});
+			}
 			
 			linksContainer.appendChild(anchor);
 		});
 
 		navigationRoot.appendChild(linksContainer);
-	}
+	}	
 }
 
 customElements.define('quiz-navbar', NavBar);

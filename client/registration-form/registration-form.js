@@ -7,7 +7,7 @@ const validators = [
 	validatePassword,
 ];
 
-const router = await Router.create();
+const router = new Router();
 async function sendForm()
 {
 	let errorsCount = 0;

@@ -1,5 +1,5 @@
 <?php
-class UserSuccessAuth implements JsonSerializable
+class UserAuthenticationSuccess implements JsonSerializable
 {
 	private $message;
 
@@ -13,6 +13,7 @@ class UserSuccessAuth implements JsonSerializable
 		return $this->message;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize()
 	{
 		if(isset($_SESSION) && isset($_SESSION['username'])) {

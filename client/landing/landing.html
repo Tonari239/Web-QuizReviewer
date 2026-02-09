@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quizzer</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="landing.css">
+	<script type="module" src="../common/reused-components/nav-bar/navbar.js"></script>
+	<script type="module" src="landing.js" defer></script>
+	<script>
+	// Configure navbar links
+		document.addEventListener('DOMContentLoaded', () => {
+			const navbar = document.querySelector('quiz-navbar');
+			navbar.links = [
+				{ text: 'Влизане', href: '../login-form/login-form.html' },
+				{ text: 'Регистрация', href: '../registration-form/registration-form.html' }
+			];
+		});
+	</script>
+</head>
+
+<body>
+	<header>
+		<quiz-navbar active=""></quiz-navbar>
+	</header>
+	<section id="hero">
+		<h1 id="landingHeader">Здравей, {име} :)</h1>
+
+		<div class="hero-content">
+			<div class="hero-image">
+				<img src="../../Image_resources/placeholder.png" alt="User illustration">
+			</div>
+
+			<p class="hero-text">
+				Добре дошъл в Quizzer, сайта за управление,
+				импортиране и експортиране на твоите куизове.
+			</p>
+		</div>
+	</section>
+
+	<hr class="divider">
+
+	<section id="features">
+		<h2>Тук можеш да ...</h2>
+
+		<div class="feature-cards">
+			<div class="card">
+				<p>Решаваш /<br> Рецензираш куизове</p>
+			</div>
+			<div  class="card">
+				<a href="../../csv_parser/test.html">
+					<p>Импортираш куизове от CSV</p>
+				</a>
+			</div>
+
+			<div class="card">
+				<p>Експортираш куизове от XML</p>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

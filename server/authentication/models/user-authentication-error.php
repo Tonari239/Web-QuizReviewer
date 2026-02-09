@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../../common_models/IDbSerializable.php';
 class UserAuthenticationError implements JsonSerializable
 {
 	private $message;
@@ -13,7 +12,7 @@ class UserAuthenticationError implements JsonSerializable
 	{
 		return $this->message;
 	}
-
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize()
 	{
 		return [

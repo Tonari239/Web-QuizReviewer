@@ -1,0 +1,80 @@
+body {
+	margin: 0;
+	padding: 6rem 4rem;
+	background: url("../../Image_resources/login_reg_background.png") no-repeat center center fixed;
+	background-size: cover;
+	font-family: 'Inter', sans-serif;
+	color: #420420;
+}
+
+/* ---------- HERO ---------- */
+
+#hero {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+#landingHeader {
+	color: #5b1b6b;
+	font-size: 2.4rem;
+	margin-bottom: 3rem;
+}
+
+.hero-content {
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+}
+
+.hero-image {
+	background: linear-gradient(135deg, #d8f5c4, #e9f6dc);
+	padding: 2rem;
+	border-radius: 12px;
+}
+
+.hero-image img {
+	width: 220px;
+	height: auto;
+	display: block;
+}
+
+.hero-text {
+	max-width: 420px;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #7a7a7a;
+}
+
+/* ---------- DIVIDER ---------- */
+
+.divider {
+	margin: 4rem 0;
+	border: none;
+	border-top: 2px dashed #cfcfcf;
+}
+
+/* ---------- FEATURES ---------- */
+
+#features h2 {
+	color: #5b1b6b;
+	margin-bottom: 2rem;
+}
+
+.feature-cards {
+	display: flex;
+	gap: 2rem;
+}
+
+.card {
+	width: 180px;
+	height: 180px;
+	background: #6e6e8e;
+	border-radius: 16px;
+	padding: 1rem;
+	color: white;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	text-align: center;
+	font-size: 0.9rem;
+}

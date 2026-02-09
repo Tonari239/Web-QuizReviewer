@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 	exit();
 }
 
-require_once __DIR__ . '/authentication/auth-controller.php';
+require_once __DIR__ . '/server/authentication/authentication-controller.php';
 
 class Application
 {
@@ -45,6 +45,14 @@ class Application
 			}
 			echo $this->authController->loginUser();
 		}
+		elseif (isset($_GET['logoutUser'])) {
+			if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+				http_response_code(405);
+				echo json_encode(["error" => "Method not allowed. Use POST."]);
+				return;
+			}
+			echo $this->authController->logoutUser();
+		}
 		elseif (isset($_GET['homePage'])) {
 			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 				http_response_code(405);
@@ -52,11 +60,11 @@ class Application
 				return;
 			}
 			header('Content-Type: text/html');
-			header('Location: /client/home-page.html');
+			header('Location: /client/landing/landing.html');
 		}
 		 else {
 			header('Content-Type: text/html');
-			header('Location: /client/home-page.html');
+			header('Location: /client/landing/landing.html');
 			exit();
 		}
 	}
