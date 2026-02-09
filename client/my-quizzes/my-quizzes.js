@@ -9,11 +9,11 @@ const deleteButton = new ButtonCreatorCallback("Изтрий", (quizId) => {
 	fetch(router.getDataApiEndpoint() + "/deleteQuiz/", new URLSearchParams({quizId: quizId}).toString());
 }, "../../Image_resources/Icons/trash-can.png");
 
-const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  () => {
+const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  (quizId) => {
 	fetch(router.getDataApiEndpoint() + "/exportQuiz/", new URLSearchParams({quizId: quizId}).toString());
 }, "../../Image_resources/Icons/xml-file-format-symbol.png");
 
-const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензий", () => {
+const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензий", (quizId) => {
 	router.redirectTo("kuvto e url-a za recenzii");
 }, "../../Image_resources/Icons/eye.png");
 
@@ -25,3 +25,7 @@ const quizPreviews = [
 
 const buttonsCreatorFunctions = [deleteButton, exportToXMLButton, viewReviewsButton];
 const myQuizzesTable = new QuizTable(quizPreviews, buttonsCreatorFunctions);
+
+// Add the table to the DOM
+const container = document.getElementById('quiz-container');
+container.appendChild(myQuizzesTable);

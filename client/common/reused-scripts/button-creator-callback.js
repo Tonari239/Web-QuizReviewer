@@ -1,4 +1,4 @@
-class ButtonCreatorCallback
+export class ButtonCreatorCallback
 {
 	constructor(buttonText, onClickHandler, buttonLogo)
 	{

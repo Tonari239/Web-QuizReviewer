@@ -1,4 +1,4 @@
-class QuizPreview {
+export class QuizPreview {
 
 	  constructor(id, name) {
 		this._id = id;
