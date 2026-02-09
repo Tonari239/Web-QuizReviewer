@@ -19,6 +19,11 @@ export class Router {
 		return this._baseUrl + "?logoutUser";
 	}
 	
+	getDataApiEndpoint()
+	{
+		return this._baseUrl + "/api";
+	}
+
 	redirectTo(url) {
 		window.location.replace(url);
 	}
