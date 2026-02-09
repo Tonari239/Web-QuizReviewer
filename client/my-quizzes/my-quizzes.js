@@ -2,15 +2,15 @@ const router = new Router();
 
 const deleteButton = new ButtonCreatorCallback("Изтрий", (quizId) => {
 	router.getDataApiEndpoint() + "/deleteQuiz/" + quizId
-}, "..");
+}, "../../Image_resources/Icons/trash-can.png");
 
 const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  () => {
 	router.getDataApiEndpoint() + "/exportQuiz/" + quizId
-}, "..");
+}, "../../Image_resources/Icons/xml-file-format-symbol.png");
 
 const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензий", () => {
 	router.redirectTo("kuvto e url-a za recenzii") + quizId;
-}, "..");
+}, "../../Image_resources/Icons/eye.png");
 
 const quizPreviews = [
 	new QuizPreview(1, "Quiz 1"),
