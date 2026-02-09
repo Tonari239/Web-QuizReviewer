@@ -13,10 +13,11 @@ const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  (
 	fetch(router.getDataApiEndpoint() + "/exportQuiz/", new URLSearchParams({quizId: quizId}).toString());
 }, "../../Image_resources/Icons/xml-file-format-symbol.png");
 
-const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензий", (quizId) => {
+const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензии", (quizId) => {
 	router.redirectTo("kuvto e url-a za recenzii");
 }, "../../Image_resources/Icons/eye.png");
 
+//TODO: make call to backend to fetch quiz previews here.
 const quizPreviews = [
 	new QuizPreview(1, "Quiz 1"),
 	new QuizPreview(2, "Quiz 2"),
