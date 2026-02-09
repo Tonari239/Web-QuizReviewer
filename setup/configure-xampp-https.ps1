@@ -13,6 +13,7 @@ function Find-XamppPath {
         "C:\Program Files\xampp",
         "C:\Program Files (x86)\xampp",
         "D:\xampp"
+		"F:\xampp"
     )
     
     foreach ($path in $commonPaths) {
@@ -34,7 +35,7 @@ function Backup-ConfigFile {
         $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
         $backupPath = "$FilePath.backup_$timestamp"
         Copy-Item -Path $FilePath -Destination $backupPath -Force
-        Write-Host "✓ Backed up: $backupPath" -ForegroundColor Green
+        Write-Host "[SUCCESS] Backed up: $backupPath" -ForegroundColor Green
         return $true
     }
     return $false
@@ -96,11 +97,13 @@ function Restart-Apache {
         try {
             Stop-Process -Name "httpd" -Force -ErrorAction SilentlyContinue
             Start-Sleep -Seconds 2
-            Write-Host "  ✓ Apache stopped" -ForegroundColor Green
+            Write-Host "[SUCCESS] Apache stopped" -ForegroundColor Green
         } catch {
+			Read-Host -Prompt "Press Enter to exit"
             Write-Warning "  Could not stop Apache gracefully"
         }
     } else {
+		Read-Host -Prompt "Press Enter to exit"
         Write-Host "  Apache is not currently running" -ForegroundColor Yellow
     }
     
@@ -115,13 +118,14 @@ function Restart-Apache {
             # Verify Apache started
             $apacheProcess = Get-Process -Name "httpd" -ErrorAction SilentlyContinue
             if ($apacheProcess) {
-                Write-Host "  ✓ Apache started successfully" -ForegroundColor Green
+                Write-Host "[SUCCESS] Apache started successfully" -ForegroundColor Green
                 return $true
             } else {
                 Write-Warning "  Apache may not have started. Please check XAMPP Control Panel."
                 return $false
             }
         } catch {
+			Read-Host -Prompt "Press Enter to exit"
             Write-Error "  Failed to start Apache: $_"
             return $false
         }
@@ -141,9 +145,10 @@ if ([string]::IsNullOrWhiteSpace($XamppPath)) {
     $XamppPath = Find-XamppPath
     
     if ($null -eq $XamppPath) {
-        $XamppPath = Read-Host "Please enter your XAMPP installation path (e.g., C:\xampp)"
+        $XamppPath = Read-Host "Please enter your XAMPP installation path (e.g. C:\xampp)"
         if (-not (Test-Path "$XamppPath\apache\conf\httpd.conf")) {
             Write-Error "Invalid XAMPP path. httpd.conf not found."
+			Read-Host -Prompt "Press Enter to exit"
             exit 1
         }
     }
@@ -205,10 +210,11 @@ if (Test-Path $httpdSslConfPath) {
     }
     
     Set-Content -Path $httpdSslConfPath -Value $sslContent -Encoding UTF8
-    Write-Host "  ✓ DocumentRoot set to: $ProjectPath" -ForegroundColor Green
-    Write-Host "  ✓ ServerName set to: localhost:443" -ForegroundColor Green
+    Write-Host "[SUCCESS] DocumentRoot set to: $ProjectPath" -ForegroundColor Green
+    Write-Host "[SUCCESS] ServerName set to: localhost:443" -ForegroundColor Green
 } else {
     Write-Error "httpd-ssl.conf not found at: $httpdSslConfPath"
+	Read-Host -Prompt "Press Enter to exit"
     exit 1
 }
 
@@ -222,8 +228,8 @@ RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 "@
 
-Set-Content -Path $htaccessPath -Value $htaccessContent -Encoding UTF8
-Write-Host "  ✓ .htaccess file created/updated at: $htaccessPath" -ForegroundColor Green
+Set-Content -Path $htaccessPath -Value $htaccessContent
+Write-Host  ".htaccess file created/updated at: $htaccessPath" -ForegroundColor Green
 
 # Step 8: Restart Apache
 Write-Host "`n[8/8] Restarting Apache..." -ForegroundColor Yellow
@@ -233,10 +239,11 @@ $restartSuccess = Restart-Apache -XamppPath $XamppPath
 Write-Host "`n=== Configuration Complete! ===" -ForegroundColor Green
 
 if ($restartSuccess) {
-    Write-Host "`n✓ Apache has been restarted with HTTPS enabled" -ForegroundColor Green
+    Write-Host "`n[SUCCESS] Apache has been restarted with HTTPS enabled" -ForegroundColor Green
     Write-Host "`nYou can now access your project at: https://localhost" -ForegroundColor White
 } else {
-    Write-Host "`n⚠ Please restart Apache manually from XAMPP Control Panel" -ForegroundColor Yellow
+	Read-Host -Prompt "Press Enter to exit"
+    Write-Host "`n[WARN] Please restart Apache manually from XAMPP Control Panel" -ForegroundColor Yellow
     Write-Host "Then access your project at: https://localhost" -ForegroundColor White
 }
 
@@ -248,3 +255,4 @@ Write-Host "XAMPP Path:   $XamppPath" -ForegroundColor White
 Write-Host "Project Path: $ProjectPath" -ForegroundColor White
 Write-Host "HTTPS URL:    https://localhost" -ForegroundColor White
 Write-Host ""
+Read-Host -Prompt "Press Enter to exit"
