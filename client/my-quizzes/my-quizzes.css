@@ -91,3 +91,12 @@ button span {
 	gap: 20em;
 	margin-bottom: 1.5em;
 }
+
+* {
+	font-family: 'Inter', sans-serif;
+}
+
+#no-quizzes-indicator {
+	color:#420420;
+	visibility: hidden;
+}

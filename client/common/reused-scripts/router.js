@@ -24,6 +24,11 @@ export class Router {
 		return this._baseUrl + "/api";
 	}
 
+	getQuizPreviewsEndpoint()
+	{
+		return this._baseUrl + "?getQuizPreviews";
+	}
+
 	redirectTo(url) {
 		window.location.replace(url);
 	}

@@ -49,7 +49,7 @@ export class QuizTable extends HTMLElement {
 			const nameData = document.createElement('td');
 			const operationsData = document.createElement('td');
 
-			nameData.textContent = quiz._name;
+			nameData.textContent = quiz.name;
 			this._addOperations(operationsData);
 
 			row.appendChild(nameData);

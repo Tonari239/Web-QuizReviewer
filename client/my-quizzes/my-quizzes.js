@@ -17,16 +17,28 @@ const viewReviewsButton = new ButtonCreatorCallback("Прегледай реце
 	router.redirectTo("kuvto e url-a za recenzii");
 }, "../../Image_resources/Icons/eye.png");
 
-//TODO: make call to backend to fetch quiz previews here.
-const quizPreviews = [
-	new QuizPreview(1, "Quiz 1"),
-	new QuizPreview(2, "Quiz 2"),
-	new QuizPreview(3, "Quiz 3")
-];
+const createButton = document.querySelector('#create-button');
+createButton.addEventListener('click', () => {
+	router.redirectTo("kuvto e url-a za създаване на quiz");
+});
 
-const buttonsCreatorFunctions = [deleteButton, exportToXMLButton, viewReviewsButton];
-const myQuizzesTable = new QuizTable(quizPreviews, buttonsCreatorFunctions);
+const quizPreviews = await fetch(router.getQuizPreviewsEndpoint())
+.then(response => { 
+	var res = response.json(); 
+	return res;
+});
+const noQuizzesIndicator = document.getElementById('no-quizzes-indicator');
+if(quizPreviews.length === 0)
+{
+	noQuizzesIndicator.style.visibility = 'visible';
+}
+else
+{
+	const buttonsCreatorFunctions = [deleteButton, exportToXMLButton, viewReviewsButton];
+	const myQuizzesTable = new QuizTable(quizPreviews, buttonsCreatorFunctions);
+	const container = document.getElementById('quiz-container');
+	container.appendChild(myQuizzesTable);
+	noQuizzesIndicator.style.visibility = 'hidden';
+}
 
-// Add the table to the DOM
-const container = document.getElementById('quiz-container');
-container.appendChild(myQuizzesTable);
+
