@@ -22,7 +22,7 @@ $tmpPath = $uploadDir . '/' . uniqid('exam_', true) . '.csv';
 move_uploaded_file($file['tmp_name'], $tmpPath);
 
 try {
-	$questions = CSV_Parser::extract($tmpPath);
+	$questions = CSVParser::extract($tmpPath);
 	unlink($tmpPath);
 
 	echo json_encode([
