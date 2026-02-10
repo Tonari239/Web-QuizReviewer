@@ -59,6 +59,7 @@ class AuthenticationController
 
             $userRecord = $this->dbManager->findWhere('users',['email'],[$user->getEmail()]);
             $_SESSION['username'] = $userRecord['username'];
+            $_SESSION['user_guid'] = $userRecord['user_guid'];
             return json_encode(new UserAuthenticationSuccess("Потребителят се вписа успешно"), JSON_UNESCAPED_UNICODE);
         }
         else

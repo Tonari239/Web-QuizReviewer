@@ -24,9 +24,14 @@ export class Router {
 		return this._baseUrl + "/api";
 	}
 
-	getQuizPreviewsEndpoint()
+	getMyQuizPreviews()
 	{
-		return this._baseUrl + "?getQuizPreviews";
+		return this._baseUrl + "?getMyQuizPreviews";
+	}
+
+	getAllQuizPreviews()
+	{
+		return this._baseUrl + "?getAllQuizPreviews";
 	}
 
 	redirectTo(url) {

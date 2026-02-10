@@ -22,7 +22,7 @@ createButton.addEventListener('click', () => {
 	router.redirectTo("kuvto e url-a za създаване на quiz");
 });
 
-const quizPreviews = await fetch(router.getQuizPreviewsEndpoint())
+const quizPreviews = await fetch(router.getMyQuizPreviews())
 .then(response => { 
 	var res = response.json(); 
 	return res;

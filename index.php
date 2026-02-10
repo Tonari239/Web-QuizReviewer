@@ -56,13 +56,21 @@ class Application
 			}
 			echo $this->authController->logoutUser();
 		}
-		elseif (isset($_GET['getQuizPreviews'])) {
+		elseif (isset($_GET['getMyQuizPreviews'])) {
 			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 				http_response_code(405);
 				echo json_encode(["error" => "Method not allowed. Use GET."]);
 				return;
 			}
-			echo $this->dataApi->getQuizPreviews();
+			echo $this->dataApi->getMyQuizPreviews();
+		}
+		elseif (isset($_GET['getAllQuizPreviews'])) {
+			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+				http_response_code(405);
+				echo json_encode(["error" => "Method not allowed. Use GET."]);
+				return;
+			}
+			echo $this->dataApi->getAllQuizPreviews();
 		}
 		elseif (isset($_GET['deleteQuiz'])) {
 			if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
