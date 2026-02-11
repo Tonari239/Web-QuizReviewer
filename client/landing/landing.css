@@ -39,7 +39,7 @@ body {
 
 .hero-text {
 	max-width: 420px;
-	font-size: 1rem;
+	font-size: 2rem;
 	line-height: 1.5;
 	color: #7a7a7a;
 }
@@ -52,19 +52,44 @@ body {
 
 .feature-cards {
 	display: flex;
-	gap: 2rem;
+	gap: 3rem;
 }
 
 .card {
-	width: 180px;
-	height: 180px;
+	width: 240px;
+	height: 240px;
 	background: #6e6e8e;
 	border-radius: 16px;
 	padding: 1rem;
 	color: white;
 	display: flex;
-	align-items: flex-start;
+	align-items:center;
+	flex-direction: column;
 	justify-content: center;
 	text-align: center;
-	font-size: 0.9rem;
+	font-size: 1.5rem;
 }
+
+.card a :hover{
+	color:#420420;
+	transition: 0.3s;
+}
+
+
+.card img{
+	max-width: 100px;
+	max-height: 100px;
+	
+}
+.card a{
+	text-decoration: none;
+}
+
+.card a:link{
+	color:#FFF4F8;
+}	
+
+.card a:visited{
+	color:#FFF4F8;
+}
+
