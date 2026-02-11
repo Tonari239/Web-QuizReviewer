@@ -236,6 +236,10 @@ INSERT INTO reviews (quiz_id, reviewer_user_guid, rating, review_text) VALUES
 INSERT INTO reviews (quiz_id, reviewer_user_guid, rating, review_text) VALUES
 (5, '550e8400-e29b-41d4-a716-446655440001', 4, 'Solid introduction to PHP. The superglobal questions were especially useful.');
 
+
+--Jane reviews her own quiz (should be allowed)
+INSERT INTO reviews (quiz_id, reviewer_user_guid, rating, review_text) VALUES
+(3, '550e8400-e29b-41d4-a716-446655440001', 5, 'I am very proud of this quiz! It covers essential database design principles that every developer should know. I hope it helps others as much as it helped me when I was learning.');
 -- ============================================
 -- INSERT QUESTION REVIEWS
 -- ============================================
