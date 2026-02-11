@@ -38,6 +38,41 @@ font-size:16px;
 cursor:pointer;
 }
 
+.submit:hover{
+background:#686890;
+}
+
+.cancel{
+background:#420420;
+color:white;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.cancel:hover{
+background:#686890;
+}
+
+.button-group{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-top:20px;
+}
+
+.button-group .submit{
+flex:0 1 auto;
+min-width:150px;
+}
+
+.button-group .cancel{
+flex:0 1 auto;
+min-width:150px;
+}
+
 .star{
 font-size:22px;
 cursor:pointer;
