@@ -1,0 +1,68 @@
+body {
+	margin: 0;
+	padding: 6rem 4rem;
+	background: url("../../Image_resources/login_reg_background.png") no-repeat center center fixed; 
+	background-size: cover;
+	font-family: 'Inter', sans-serif;
+	color: #420420;
+}
+
+#createHeader, #finishHeader{
+	color: #5b1b6b;
+	font-size: 2.4rem;
+	margin-bottom: 3rem;
+}
+
+#quizHeader{
+    color: #5b1b6b;
+	font-size: 1.4rem;
+	margin-bottom: 3rem;
+}
+#csvForm *{
+    font-size: 1.5rem;
+}
+
+.question {
+	background: #420420;
+    max-width: 20vw;
+	border-radius: 16px;
+	padding: 1rem;
+    margin: 1rem;
+	color: white;
+	text-align: left;
+	font-size: 2rem;
+}
+
+.questions {
+    flex-flow: column;
+	max-width: 20vw;
+	border-radius: 16px;
+	padding: 1rem;
+    margin: 1rem;
+	justify-content: center;
+    display: none;
+}
+
+#upload-btn
+{
+	color: #FFF4F8;
+	background-color: #420420;
+	border: none;
+	padding: 0.5em 2em;
+	border-radius: 1em;
+	cursor: pointer;
+	margin-top: 5rem;
+}
+
+#saveQuizBtn
+{
+	color: #FFF4F8;
+	background-color: #420420;
+	border: none;
+	padding: 0.5em 2em;
+	border-radius: 1em;
+	cursor: pointer;
+	margin-top: 1rem;
+	display: none;
+	font-size: 1.5rem;
+}

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/CSV-Parser.php';
+require_once __DIR__ . '/CSV_Parser.php';
 
 header('Content-Type: application/json');
 
@@ -22,7 +22,7 @@ $tmpPath = $uploadDir . '/' . uniqid('exam_', true) . '.csv';
 move_uploaded_file($file['tmp_name'], $tmpPath);
 
 try {
-	$questions = CSVParser::extract($tmpPath);
+	$questions = CSV_Parser::extract($tmpPath);
 	unlink($tmpPath);
 
 	echo json_encode([

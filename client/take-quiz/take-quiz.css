@@ -1,0 +1,65 @@
+body {
+	margin: 0;
+	padding: 6rem 4rem;
+	background: url("../../Image_resources/login_reg_background.png") no-repeat center center fixed; 
+	background-size: cover;
+	font-family: 'Inter', sans-serif;
+	color: #420420;
+}
+
+
+#quizHeader{
+    color: #5b1b6b;
+	font-size: 1.4rem;
+	margin-bottom: 3rem;
+}
+
+
+
+#submitQuiz
+{
+	color: #FFF4F8;
+	background-color: #420420;
+	border: none;
+	padding: 0.5em 2em;
+	border-radius: 1em;
+	cursor: pointer;
+	margin-top: 1rem;
+	font-size: 1.5rem;
+}
+
+.question {
+	margin-bottom: 2rem;
+}
+
+.answer-box {
+	display: block;
+	background-color: #420420;
+	padding: 1rem;
+	margin: 0.5rem 0;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	color: white;
+	font-family: sans-serif;
+}
+
+.answer-box:hover {
+	background-color: #686890;
+}
+
+.answer-box input[type="radio"] {
+	margin-right: 0.8rem;
+}
+
+.answer-box input[type="radio"]:checked {
+	display: none;
+}
+
+.answer-box input[type="radio"]:checked + span {
+	display: block;
+}
+
+.answer-box:has(input[type="radio"]:checked) {
+	background-color: #686890;
+}
