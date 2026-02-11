@@ -9,7 +9,7 @@ const deleteButton = new ButtonCreatorCallback("Изтрий", (quizId) => {
 }, "../../Image_resources/Icons/trash-can.png");
 
 const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  (quizId) => {
-	fetch(router.getDataApiEndpoint() + "/exportQuiz/", new URLSearchParams({quizId: quizId}).toString());
+	// TODO: redirect to quiz export page
 }, "../../Image_resources/Icons/xml-file-format-symbol.png");
 
 const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензии", (quizId) => {
@@ -18,7 +18,7 @@ const viewReviewsButton = new ButtonCreatorCallback("Прегледай реце
 
 const createButton = document.querySelector('#create-button');
 createButton.addEventListener('click', () => {
-	router.redirectTo("kuvto e url-a za създаване на quiz");
+	// TODO: redirect to quiz creation page
 });
 
 const quizPreviews = await fetch(router.getMyQuizPreviews())
