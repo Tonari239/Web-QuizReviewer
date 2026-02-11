@@ -1,6 +1,5 @@
 import { Router } from '../common/reused-scripts/router.js';
 import { QuizTable } from '../common/reused-components/quiz-table/quiz-table.js';
-import { QuizPreview } from '../common/models/quiz-preview.js';
 import { ButtonCreatorCallback } from '../common/reused-scripts/button-creator-callback.js';
 
 const router = new Router();
