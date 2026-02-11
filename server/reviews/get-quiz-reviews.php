@@ -2,8 +2,7 @@
 require "../xml-exporter/db.php";
 
 $quiz_id=(int)$_GET['quiz_id'];
-$quiz_id = isset($_GET['quiz_id']) ? (int)$_GET['quiz_id'] : 3;//remove default quiz_id after testing
-
+$quiz_id = (int)$_GET['quiz_id'] ;
 $stmt=$pdo->prepare("
 SELECT r.*, u.username
 FROM reviews r
