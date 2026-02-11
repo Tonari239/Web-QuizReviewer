@@ -7,7 +7,6 @@ body {
 	color: #420420;
 }
 
-/* ---------- HERO ---------- */
 
 #hero {
 	max-width: 1200px;
@@ -45,15 +44,6 @@ body {
 	color: #7a7a7a;
 }
 
-/* ---------- DIVIDER ---------- */
-
-.divider {
-	margin: 4rem 0;
-	border: none;
-	border-top: 2px dashed #cfcfcf;
-}
-
-/* ---------- FEATURES ---------- */
 
 #features h2 {
 	color: #5b1b6b;
