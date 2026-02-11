@@ -1,6 +1,6 @@
 export class Router {
 	constructor() {
-		this._baseUrl = 'https://localhost/index.php';
+		this._baseUrl = 'https://localhost/test/';
 	}
 
 	getHomePageUrl() {

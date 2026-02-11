@@ -41,11 +41,24 @@ else
 	}, "../../Image_resources/Icons/trash-can.png");
 
 	const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  (quizId) => {
-		// TODO: redirect to quiz export page
+
+		const form = document.createElement("form");
+		form.method = "POST";
+		form.action = "/test/server/xml-exporter/export-moodle-xml.php";
+
+		const input = document.createElement("input");
+		input.type = "hidden";
+		input.name = "quiz_id";
+		input.value = quizId;
+
+		form.appendChild(input);
+		document.body.appendChild(form);
+
+		form.submit();
 	}, "../../Image_resources/Icons/xml-file-format-symbol.png");
 
 	const viewReviewsButton = new ButtonCreatorCallback("Прегледай рецензии", (quizId) => {
-		router.redirectTo("kuvto e url-a za recenzii");
+		router.redirectTo("../reviews/reviews-list.html?quiz_id=" + quizId);
 	}, "../../Image_resources/Icons/eye.png");
 
 	const buttonsCreatorFunctions = [deleteButton, exportToXMLButton, viewReviewsButton];
