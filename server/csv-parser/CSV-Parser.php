@@ -16,13 +16,8 @@ class CSVParser
         $handle = fopen($filePath, "r");
         
         
-        $isValid = CSVValidator::validate($filePath);
-        if($isValid['valid'] == false)
-        {
-            //print the error message to the user 
-            //the message is in isValid['message']
-            return [];
-        }
+        
+        
 
         while (($row = fgetcsv($handle)) !== FALSE) 
         {

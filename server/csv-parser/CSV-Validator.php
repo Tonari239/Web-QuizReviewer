@@ -30,20 +30,32 @@ class CSVValidator
             {
                 return self::error("Question text cannot be empty");
             }
-
+            
+            $answersCount = count($row) - 3; 
             $correctAnswer = $row[count($row)-2];
 
-            if(!preg_match('/^[A-Z]$/', $correctAnswer))
+            if(!preg_match('/^[A-ZА-Я]$/u', $correctAnswer))
             {
-                return self::error("Correct answer must be a single uppercase letter (A-Z)");
+                return self::error("Correct answer must be a single uppercase letter (A-Z or А-Я)");
             }
 
-            $maxLetter = chr(64 + (count($row) - 3)); // 'A' is 65 in ASCII
+            $latinLetters = range('A', 'Z');
+            $cyrillicLetters = [
+                'А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М',
+                'Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ',
+                'Ъ','Ь','Ю','Я'
+            ];
 
-            if($correctAnswer > $maxLetter)
-            {
+            if (in_array($correctAnswer, $latinLetters)) {
+                $allowed = array_slice($latinLetters, 0, $answersCount);
+            } else {
+                $allowed = array_slice($cyrillicLetters, 0, $answersCount);
+            }
+
+            if (!in_array($correctAnswer, $allowed)) {
                 return self::error("Correct answer letter exceeds number of provided answers");
             }
+            
         }
         
         if(fmod($numberOfColumns, $numberOfRows) != 0)

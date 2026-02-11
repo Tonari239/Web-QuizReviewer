@@ -62,6 +62,7 @@ CREATE TABLE user_answers (
     FOREIGN KEY (attempt_id) REFERENCES quiz_attempts(attempt_id),
     FOREIGN KEY (question_id) REFERENCES questions(question_id),
     FOREIGN KEY (selected_option_id) REFERENCES question_options(option_id)
+);
 -- NEW TABLE ADDED FOR QUESTION REVIEWS
 
 CREATE TABLE question_reviews (

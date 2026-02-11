@@ -1,3 +1,7 @@
+import { Router } from '../common/reused-scripts/router.js';
+
+var router = new Router();
+
 document.addEventListener('DOMContentLoaded', async () => {
 
 	const params = new URLSearchParams(window.location.search);
@@ -103,6 +107,7 @@ document.getElementById('submitQuiz').addEventListener('click', async () => {
 
     if (result.success) {
         alert(`Тестът е предаден успешно!`);
+        router.redirectTo('../all-quizzes/all-quizzes.html');
     } else {
         alert(result.error || 'Грешка при изпращане');
     }

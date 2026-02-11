@@ -133,7 +133,7 @@ document.getElementById('saveQuizBtn').addEventListener('click', async () => {
 
 	if (result.success) {
 		alert('Тестът е запазен успешно!');
-		window.location.href = `#`;
+		router.redirectTo('../my-quizzes/my-quizzes.html');
 	} else {
 		alert(result.error || 'Грешка при записване');
 	}
