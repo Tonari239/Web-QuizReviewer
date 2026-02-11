@@ -41,3 +41,18 @@ CREATE TABLE reviews (
     FOREIGN KEY (reviewer_user_guid) REFERENCES users(user_guid) ON DELETE CASCADE,
     UNIQUE(quiz_id, reviewer_user_guid)
 );
+
+-- NEW TABLE ADDED FOR QUESTION REVIEWS
+
+CREATE TABLE question_reviews (
+    question_review_id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    reviewer_user_guid VARCHAR(36) NOT NULL,
+    review_text TEXT,
+    difficulty INT CHECK (difficulty >= 1 AND difficulty <= 5),
+
+    FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewer_user_guid) REFERENCES users(user_guid) ON DELETE CASCADE,
+
+    UNIQUE(question_id, reviewer_user_guid)
+);
