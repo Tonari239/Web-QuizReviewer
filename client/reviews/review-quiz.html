@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Review Quiz</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./review-quiz.css">
+<script src="../common/reused-components/nav-bar/navbar.js"></script>
+</head>
+
+<body>
+
+<quiz-navbar id="navbar" active="Review"></quiz-navbar>
+
+<div class="container">
+<form id="reviewForm" method="POST" action="../../server/reviews/submit-review.php">
+
+<input type="hidden" name="quiz_id" id="quiz_id">
+
+<div id="questionsContainer"></div>
+
+<div class="card">
+<h3>General Quiz Review</h3>
+<textarea name="general_review" placeholder="Write overall review..."></textarea>
+</div>
+
+<div class="card">
+<strong>Quiz rating:</strong>
+<input type="hidden" name="quiz_rating" value="0" class="rating-input">
+
+<span class="stars">
+<span class="star" data-value="1">&#9733;</span>
+<span class="star" data-value="2">&#9733;</span>
+<span class="star" data-value="3">&#9733;</span>
+<span class="star" data-value="4">&#9733;</span>
+<span class="star" data-value="5">&#9733;</span>
+</span>
+</div>
+
+<button class="submit">Submit Review</button>
+
+</form>
+</div>
+
+<script src="./review-quiz.js" defer></script>
+</body>
+</html>
