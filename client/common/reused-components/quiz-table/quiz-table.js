@@ -8,6 +8,11 @@ export class QuizTable extends HTMLElement {
 		this._createTable();
 	}
 	
+	set quizPreviewList(newQuizPreviewList){
+		this._quizPreviewList = newQuizPreviewList;
+		this._createTable();
+	}
+
 	_createTable() {
 		this.shadow.innerHTML = '';
 		
