@@ -28,6 +28,7 @@ else
 
 	const reviewButton = new ButtonCreatorCallback("Рецензирай", (quizId) => {
 		//TODO: redirect to quiz grading page
+		router.redirectTo("../reviews/review-quiz.html?quiz_id=" + quizId);
 	}, "../../Image_resources/Icons/grade.png");
 
 	const buttonsCreatorFunctions = [fillButton, reviewButton];
