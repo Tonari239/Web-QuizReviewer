@@ -250,6 +250,56 @@ INSERT INTO question_reviews (quiz_id, question_id, reviewer_user_guid, review_t
 (3, 2, '550e8400-e29b-41d4-a716-446655440001', 'Good question, but could use an example.', 3),
 (3, 3, '550e8400-e29b-41d4-a716-446655440001', 'Excellent question that tests both value and type comparison.', 4),
 (3, 4, '550e8400-e29b-41d4-a716-446655440001', 'This question is a bit tricky for beginners.', 4);
+
+-- ============================================
+-- INSERT QUIZ ATTEMPTS
+-- ============================================
+-- john_doe attempts HTML & CSS Basics quiz (quiz_id: 2)
+INSERT INTO quiz_attempts (user_guid, quiz_id, score, submitted_at) VALUES
+('550e8400-e29b-41d4-a716-446655440000', 2, 3, NOW());
+
+-- jane_smith attempts JavaScript Fundamentals quiz (quiz_id: 1)
+INSERT INTO quiz_attempts (user_guid, quiz_id, score, submitted_at) VALUES
+('550e8400-e29b-41d4-a716-446655440001', 1, 2, NOW());
+
+-- ============================================
+-- INSERT USER ANSWERS FOR ATTEMPT 1 (john_doe - HTML & CSS quiz)
+-- ============================================
+-- Question 5: Which HTML tag is used for the largest heading? (Correct: h1 = option 19)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(1, 5, 19);  -- Selected "h1" (CORRECT)
+
+-- Question 6: What does CSS stand for? (Correct: option 23 = Cascading Style Sheets, selected 21 = Computer Style Sheets)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(1, 6, 21);  -- Selected "Computer Style Sheets" (INCORRECT)
+
+-- Question 7: CSS property for text size? (Correct: option 26 = font-size)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(1, 7, 26);  -- Selected "font-size" (CORRECT)
+
+-- Question 8: HTML element for line break? (Correct: option 31 = br)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(1, 8, 31);  -- Selected "br" (CORRECT)
+
+-- ============================================
+-- INSERT USER ANSWERS FOR ATTEMPT 2 (jane_smith - JavaScript quiz)
+-- ============================================
+-- Question 1: What keyword is used to declare a constant? (Correct: option 3 = const)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(2, 1, 3);  -- Selected "const" (CORRECT)
+
+-- Question 2: Which method is used to add element to end of array? (Correct: option 5 = push, selected 6 = pop)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(2, 2, 6);  -- Selected "pop()" (INCORRECT)
+
+-- Question 3: What does === operator do? (Correct: option 10 = Compares both value and type, selected 9 = Compares values only)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(2, 3, 9);  -- Selected "Compares values only" (INCORRECT)
+
+-- Question 4: Which is NOT a JavaScript data type? (Correct: option 15 = Character)
+INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
+(2, 4, 15);  -- Selected "Character" (CORRECT)
+
 -- To see complete quiz with questions and options:
 -- SELECT 
 --     q.quiz_name,
