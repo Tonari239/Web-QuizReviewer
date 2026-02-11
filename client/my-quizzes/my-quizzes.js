@@ -8,7 +8,7 @@ const router = new Router();
 
 const createButton = document.querySelector('#create-button');
 createButton.addEventListener('click', () => {
-	// TODO: redirect to quiz creation page
+	router.redirectTo("../create-quiz/create-quiz.html");
 });
 
 const quizPreviews = await fetch(router.getMyQuizPreviews())
