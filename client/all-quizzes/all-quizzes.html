@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quizzer</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="all-quizzes.css">
+		<script type="module" src="../common/reused-components/nav-bar/navbar.js"></script>
+		<script type="module" src="../common/reused-components/quiz-table/quiz-table.js"></script>
+		<script type="module" src="all-quizzes.js" defer></script>
+		<script>
+			// Configure navbar links
+			document.addEventListener('DOMContentLoaded', () => {
+				const navbar = document.querySelector('quiz-navbar');
+				navbar.links = [
+						{ text: 'Моите куизове', href: "../my-quizzes/my-quizzes.html" },
+						{ text: 'Всички куизове', href: './all-quizzes.html' },
+						{ text: 'Профил', href: '../landing/landing.html' },
+					];
+				}
+			);
+		</script>
+	</head>
+		
+	<body>
+		<header>
+			<quiz-navbar active="Всички куизове"></quiz-navbar>
+		</header>
+		<div id="main-container" class="container">
+			<div id="quiz-container">
+				<div id="operations-container">
+					<div id="search-container">
+						<input id="search-my-quizzes" type="text" placeholder="Търсене..." />
+						<img src="../../Image_resources/Icons/magnifying-glass.png" alt="Search" id="search-icon">
+					</div>
+				</div>
+			</div>
+			<h2 id="no-quizzes-indicator">Няма куизове за показване!</h2>
+		</div>
+		
+	</body>
+</html>

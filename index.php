@@ -17,13 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 require_once __DIR__ . '/server/authentication/authentication-controller.php';
+require_once __DIR__ . '/server/api/data-api.php';
 
 class Application
 {
 	private $authController;
+	private $dataApi;
 
 	public function __construct() {
 		$this->authController = new AuthenticationController();
+		$this->dataApi = new DataApi();
 		$this->route();
 	}
 
@@ -52,6 +55,30 @@ class Application
 				return;
 			}
 			echo $this->authController->logoutUser();
+		}
+		elseif (isset($_GET['getMyQuizPreviews'])) {
+			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+				http_response_code(405);
+				echo json_encode(["error" => "Method not allowed. Use GET."]);
+				return;
+			}
+			echo $this->dataApi->getMyQuizPreviews();
+		}
+		elseif (isset($_GET['getAllQuizPreviews'])) {
+			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+				http_response_code(405);
+				echo json_encode(["error" => "Method not allowed. Use GET."]);
+				return;
+			}
+			echo $this->dataApi->getAllQuizPreviews();
+		}
+		elseif (isset($_GET['deleteQuiz'])) {
+			if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+				http_response_code(405);
+				echo json_encode(["error" => "Method not allowed. Use POST."]);
+				return;
+			}
+			echo $this->dataApi->deleteQuiz($_GET['quizId']);
 		}
 		elseif (isset($_GET['homePage'])) {
 			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {

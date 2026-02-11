@@ -1,0 +1,101 @@
+#main-container
+{
+	margin-top: 6em;
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+	align-items: center;
+}
+
+#quiz-container
+{
+	width: 60em;
+}
+
+#search-container
+{
+	position: relative;
+	width: 15em;
+	display: flex;
+	align-items: center;
+	align-self: flex-start;
+	margin-left: 5em;
+}
+
+#search-my-quizzes
+{
+	width: 100%;
+	height: 1em;
+	background-color: #420420;
+	color: #FFF4F8;
+	border: 1px solid #420420;
+	border-radius: 0.5em;
+	padding: 0.5em 3em 0.5em 1em;
+	font-size: 1em;
+	font-family: 'Inter', sans-serif;
+}
+
+#search-my-quizzes::placeholder
+{
+	color: #FFF4F8;
+	opacity: 0.7;
+}
+
+#search-my-quizzes:focus
+{
+	outline: none;
+	border: 1px solid #FFF4F8;
+}
+
+#search-icon
+{
+	position: absolute;
+	right: 1em;
+	width: 20px;
+	height: 20px;
+	pointer-events: none;
+	opacity: 0.7;
+}
+
+button {
+	color: #420420;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.3em;
+	padding: 0.5em;
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: opacity 0.3s ease;
+}
+
+button:hover {
+	opacity: 0.7;
+}
+
+button img {
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
+}
+
+button span {
+	font-size: 0.8em;
+	text-align: center;
+}
+
+#operations-container {
+	display: flex;
+	justify-content: left;
+	margin-bottom: 1.5em;
+}
+
+* {
+	font-family: 'Inter', sans-serif;
+}
+
+#no-quizzes-indicator {
+	color:#420420;
+	visibility: hidden;
+}

@@ -46,5 +46,47 @@ class DatabaseManager
             throw new Exception($e->getMessage());
         }
     }
+
+    public function selectFieldsWhere($table, $selectFields, $whereColumns, $whereValues)
+    {
+        try {
+            $pdo = $this->config->getDbConnection();
+            $selectClause = implode(", ", $selectFields);
+            $conditions = [];
+            foreach ($whereColumns as $column) {
+                $conditions[] = "$column = ?";
+            }
+            $whereClause = implode(" AND ", $conditions);
+            if(count($whereValues) > 0) {
+                $stmt = $pdo->prepare("SELECT $selectClause FROM $table WHERE $whereClause");
+            }
+            else
+            {
+                $stmt = $pdo->prepare("SELECT $selectClause FROM $table");
+            }
+            $stmt->execute($whereValues);
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            error_log("Database error in selectFieldsWhere: " . $e->getMessage());
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    public function deleteWhere($table, $whereColumns, $whereValues)
+    {
+        try {
+            $pdo = $this->config->getDbConnection();
+            $conditions = [];
+            foreach ($whereColumns as $column) {
+                $conditions[] = "$column = ?";
+            }
+            $whereClause = implode(" AND ", $conditions);
+            $stmt = $pdo->prepare("DELETE FROM $table WHERE $whereClause");
+            $stmt->execute($whereValues);
+        } catch (PDOException $e) {
+            error_log("Database error in deleteWhere: " . $e->getMessage());
+            throw new Exception($e->getMessage());
+        }
+    }
 }
 ?>

@@ -1,6 +1,8 @@
 export class Router {
 	constructor() {
-		this._baseUrl = 'https://localhost/index.php';
+		const path = window.location.pathname;
+		const basePath = path.substring(0, path.indexOf('/client'));
+		this._baseUrl = window.location.origin + basePath + '/index.php';
 	}
 
 	getHomePageUrl() {
@@ -19,6 +21,21 @@ export class Router {
 		return this._baseUrl + "?logoutUser";
 	}
 	
+	getDeleteQuizEndpoint(quizId)
+	{
+		return this._baseUrl + "?deleteQuiz&" + new URLSearchParams({quizId: quizId}).toString();
+	}
+
+	getMyQuizPreviews()
+	{
+		return this._baseUrl + "?getMyQuizPreviews";
+	}
+
+	getAllQuizPreviews()
+	{
+		return this._baseUrl + "?getAllQuizPreviews";
+	}
+
 	redirectTo(url) {
 		window.location.replace(url);
 	}

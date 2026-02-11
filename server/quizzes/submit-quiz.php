@@ -42,6 +42,20 @@ try {
 
     $pdo->beginTransaction();
 
+    $stmt = $pdo->prepare("
+        SELECT attempt_id FROM quiz_attempts 
+        WHERE user_guid = ? AND quiz_id = ?
+    ");
+    $stmt->execute([$userGuid, $quizId]);
+
+    if ($stmt->fetch()) {
+        http_response_code(400);
+        echo json_encode([
+            'error' => 'Вече си правил този тест!'
+        ]);
+        exit;
+    }
+
     // Insert attempt
     $stmt = $pdo->prepare("
         INSERT INTO quiz_attempts (user_guid, quiz_id, score)
@@ -76,6 +90,14 @@ try {
 
     if ($pdo->inTransaction()) {
         $pdo->rollBack();
+    }
+
+    if ($e->errorInfo[1] == 1062) {
+        http_response_code(400);
+        echo json_encode([
+            'error' => 'Вече си правил този тест!'
+        ]);
+        exit;
     }
 
     http_response_code(500);

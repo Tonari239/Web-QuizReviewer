@@ -1,0 +1,61 @@
+<?php
+
+require_once __DIR__ . '/../database/database-manager.php';
+require_once __DIR__ . '/../api/models/quiz-preview.php';
+
+header('Content-Type: application/json');
+class DataApi 
+{
+	private $dbManager;
+	public function __construct() 
+	{
+		$this->dbManager = new DatabaseManager();
+	}
+
+	public function getMyQuizPreviews()
+	{
+		session_start();
+
+		$nonParsedQuizzesArray = $this->dbManager->selectFieldsWhere("quizzes", ["quiz_id", "quiz_name"], ["creator_user_guid"], [$_SESSION['user_guid']]);
+		$quizPreviews = [];
+		foreach ($nonParsedQuizzesArray as $quiz) {
+			$quizPreviews[] = new QuizPreview($quiz['quiz_id'], $quiz['quiz_name']);
+		}
+
+		echo json_encode($quizPreviews);
+	}
+
+	public function getAllQuizPreviews()
+	{
+		session_start();
+
+		$nonParsedQuizzesArray = $this->dbManager->selectFieldsWhere("quizzes", ["quiz_id", "quiz_name"], [], []);
+		$quizPreviews = [];
+		foreach ($nonParsedQuizzesArray as $quiz) {
+			$quizPreviews[] = new QuizPreview($quiz['quiz_id'], $quiz['quiz_name']);
+		}
+
+		echo json_encode($quizPreviews);
+	}
+
+	public function deleteQuiz($quizId)
+	{
+		session_start();
+		
+	    $quiz = $this->dbManager->selectFieldsWhere("quizzes", ["creator_user_guid"], ["quiz_id"], [$quizId])[0];
+		if($quiz['creator_user_guid'] !== $_SESSION['user_guid']) {
+			http_response_code(403);
+			echo json_encode(["error" => "Нямате разрешение да изтриете този куиз."]);
+			return;
+		}
+		try {
+			$this->dbManager->deleteWhere("quizzes", ["quiz_id"], [$quizId]);
+			echo json_encode(["successfulDelete" => true]);
+		} catch (Exception $e) {
+			http_response_code(500);
+			echo json_encode(["error" => "Възникна грешка при изтриването на куиза."]);
+		}
+	}
+}
+
+?>

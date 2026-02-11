@@ -48,9 +48,11 @@ CREATE TABLE quiz_attempts (
     quiz_id INT NOT NULL,
     score INT NOT NULL,
     submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-
+    
+    CONSTRAINT unique_user_quiz UNIQUE (user_guid, quiz_id),
+ 
     FOREIGN KEY (user_guid) REFERENCES users(user_guid),
-    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id) ON DELETE CASCADE
 );
 
 CREATE TABLE user_answers (
@@ -62,6 +64,7 @@ CREATE TABLE user_answers (
     FOREIGN KEY (attempt_id) REFERENCES quiz_attempts(attempt_id),
     FOREIGN KEY (question_id) REFERENCES questions(question_id),
     FOREIGN KEY (selected_option_id) REFERENCES question_options(option_id)
+);
 -- NEW TABLE ADDED FOR QUESTION REVIEWS
 
 CREATE TABLE question_reviews (

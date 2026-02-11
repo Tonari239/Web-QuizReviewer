@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/CSV-Parser.php';
+require_once __DIR__.'/CSV-Validator.php';
 
 header('Content-Type: application/json');
 
@@ -11,6 +12,15 @@ if (!isset($_FILES['csv'])) {
 }
 
 $file = $_FILES['csv'];
+$filePath = $_FILES['csv']['tmp_name'];
+$validation = CSVValidator::validate($filePath);
+if (!$validation['valid']) {
+    echo json_encode([
+        'success' => false,
+        'error' => $validation['message']
+    ]);
+    exit;
+}
 
 $uploadDir = __DIR__ . '/../uploads';
 if (!is_dir($uploadDir)) {
@@ -23,6 +33,7 @@ move_uploaded_file($file['tmp_name'], $tmpPath);
 
 try {
 	$questions = CSVParser::extract($tmpPath);
+	
 	unlink($tmpPath);
 
 	echo json_encode([
