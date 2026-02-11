@@ -22,7 +22,7 @@ if(quizPreviews.length === 0)
 else
 {
 	const fillButton = new ButtonCreatorCallback("Попълни", (quizId) => {
-		//TODO: redirect to quiz filling page
+		router.redirectTo("../take-quiz/take-quiz.html?id=" + quizId);
 	}, "../../Image_resources/Icons/paper.png");
 
 
