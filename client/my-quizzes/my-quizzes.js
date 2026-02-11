@@ -61,7 +61,11 @@ else
 		router.redirectTo("../reviews/reviews-list.html?quiz_id=" + quizId);
 	}, "../../Image_resources/Icons/eye.png");
 
-	const buttonsCreatorFunctions = [deleteButton, exportToXMLButton, viewReviewsButton];
+	const viewQuizResultsButton = new ButtonCreatorCallback("Резултати", (quizId) => {
+		//TODO: redirect to quiz results page
+	}, "../../Image_resources/Icons/result.png");
+
+	const buttonsCreatorFunctions = [deleteButton, exportToXMLButton, viewReviewsButton, viewQuizResultsButton];
 	myQuizzesTable = new QuizTable(quizPreviews, buttonsCreatorFunctions);
 	const container = document.getElementById('quiz-container');
 	container.appendChild(myQuizzesTable);
