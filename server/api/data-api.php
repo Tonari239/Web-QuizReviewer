@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../database/database-manager.php';
-require_once __DIR__ . './models/quiz-preview.php';
+require_once __DIR__ . '/../api/models/quiz-preview.php';
 
 header('Content-Type: application/json');
 class DataApi 
