@@ -7,13 +7,13 @@
         <mxCell id="3nP-YFDFcMzmsdA-fqh1-15" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=-0.002;entryY=0.34;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" target="3nP-YFDFcMzmsdA-fqh1-11">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3nP-YFDFcMzmsdA-fqh1-6" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;Users&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;user_guid: Guid&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;username: varchar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;password_hash: varchar&lt;br&gt;email: varchar&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
+        <mxCell id="3nP-YFDFcMzmsdA-fqh1-6" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;users&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;user_guid: Guid&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;username: varchar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;password_hash: varchar&lt;br&gt;email: varchar&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
           <mxGeometry height="90" width="180" x="60" y="510" as="geometry" />
         </mxCell>
         <mxCell id="3nP-YFDFcMzmsdA-fqh1-21" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.941;exitY=0.231;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" target="3nP-YFDFcMzmsdA-fqh1-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3nP-YFDFcMzmsdA-fqh1-11" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;Quizzes&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;creator_user_guid: guid&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;quiz_name: varchar&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
+        <mxCell id="3nP-YFDFcMzmsdA-fqh1-11" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;quizzes&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;creator_user_guid: guid&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;quiz_name: varchar&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
           <mxGeometry height="130" width="170" x="90" y="240" as="geometry" />
         </mxCell>
         <mxCell id="3nP-YFDFcMzmsdA-fqh1-17" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" target="3nP-YFDFcMzmsdA-fqh1-11">
@@ -22,10 +22,10 @@
         <mxCell id="3nP-YFDFcMzmsdA-fqh1-19" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" target="3nP-YFDFcMzmsdA-fqh1-18">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3nP-YFDFcMzmsdA-fqh1-16" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;Questions&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;question_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;question_text: varchar&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
+        <mxCell id="3nP-YFDFcMzmsdA-fqh1-16" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;questions&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;question_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;question_text: varchar&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
           <mxGeometry height="90" width="180" x="220" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="3nP-YFDFcMzmsdA-fqh1-18" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;QuestionOptions&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;option_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;question_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;option_text: varchar&lt;br&gt;is_correct: boolean&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
+        <mxCell id="3nP-YFDFcMzmsdA-fqh1-18" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;questionOptions&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;option_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;question_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;option_text: varchar&lt;br&gt;is_correct: boolean&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
           <mxGeometry height="90" width="180" x="460" y="60" as="geometry" />
         </mxCell>
         <mxCell id="3nP-YFDFcMzmsdA-fqh1-24" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.017;entryY=0.404;entryDx=0;entryDy=0;entryPerimeter=0;" target="3nP-YFDFcMzmsdA-fqh1-20">
@@ -34,14 +34,14 @@
         <mxCell id="3nP-YFDFcMzmsdA-fqh1-30" connectable="0" parent="1" style="group" value="" vertex="1">
           <mxGeometry height="160" width="190" x="320" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="3nP-YFDFcMzmsdA-fqh1-20" parent="3nP-YFDFcMzmsdA-fqh1-30" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;Reviews&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;review_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK2&lt;/td&gt;&lt;td&gt;reviewer_user_guid: Guid&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
+        <mxCell id="3nP-YFDFcMzmsdA-fqh1-20" parent="3nP-YFDFcMzmsdA-fqh1-30" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;reviews&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;review_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK2&lt;/td&gt;&lt;td&gt;reviewer_user_guid: Guid&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
           <mxGeometry height="160" width="190" as="geometry" />
         </mxCell>
         <mxCell id="3nP-YFDFcMzmsdA-fqh1-29" parent="3nP-YFDFcMzmsdA-fqh1-30" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;review_text: varchar&lt;/div&gt;&lt;div&gt;rating: int [1,5]&lt;/div&gt;" vertex="1">
           <mxGeometry height="50" width="140" x="30" y="70" as="geometry" />
         </mxCell>
         <mxCell id="j3dBNHRKnbWB1zPHTmDF-1" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="160" width="190" x="620" y="225" as="geometry" />
+          <mxGeometry height="160" width="190" x="614" y="370" as="geometry" />
         </mxCell>
         <mxCell id="j3dBNHRKnbWB1zPHTmDF-2" parent="j3dBNHRKnbWB1zPHTmDF-1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;quiz_attempts&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;attempt_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;user_guid: varcar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK2&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
           <mxGeometry height="160" width="190" as="geometry" />
@@ -49,20 +49,59 @@
         <mxCell id="j3dBNHRKnbWB1zPHTmDF-3" parent="j3dBNHRKnbWB1zPHTmDF-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;score: int&lt;/div&gt;&lt;div&gt;submitted_at: datetime&lt;/div&gt;" vertex="1">
           <mxGeometry height="50" width="140" x="30" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="j3dBNHRKnbWB1zPHTmDF-5" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-6" style="endArrow=classic;html=1;rounded=0;" value="">
+        <mxCell id="j3dBNHRKnbWB1zPHTmDF-5" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-6" style="endArrow=classic;html=1;rounded=0;entryX=0.005;entryY=0.15;entryDx=0;entryDy=0;entryPerimeter=0;" target="j3dBNHRKnbWB1zPHTmDF-2" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <Array as="points">
               <mxPoint x="550" y="555" />
-              <mxPoint x="550" y="270" />
+              <mxPoint x="550" y="394" />
             </Array>
             <mxPoint x="380" y="630" as="sourcePoint" />
             <mxPoint x="622" y="270" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="j3dBNHRKnbWB1zPHTmDF-6" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-11" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="j3dBNHRKnbWB1zPHTmDF-2" value="">
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-2" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="160" width="190" x="601" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-3" parent="jwv_zsEtPFzZU-A_QiCl-2" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;div style=&quot;box-sizing: border-box; width: 100%; background: rgb(228, 228, 228); padding: 2px;&quot;&gt;question_reviews&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;question_review_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;question_id: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK2&lt;/td&gt;&lt;td&gt;quiz_id: int&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="160" width="190" as="geometry" />
+        </mxCell>
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-4" parent="jwv_zsEtPFzZU-A_QiCl-2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;review_text: varchar&lt;/div&gt;&lt;div&gt;difficulty: int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="140" x="30" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-5" parent="jwv_zsEtPFzZU-A_QiCl-2" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="FK3&amp;nbsp; &amp;nbsp; reviewer_user_guid" vertex="1">
+          <mxGeometry height="30" width="178" x="-16" y="67" as="geometry" />
+        </mxCell>
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-6" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-16" style="endArrow=classic;html=1;rounded=0;" target="jwv_zsEtPFzZU-A_QiCl-3" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
-            <mxPoint x="310" y="480" as="sourcePoint" />
-            <mxPoint x="360" y="430" as="targetPoint" />
+            <mxPoint x="527" y="379" as="sourcePoint" />
+            <mxPoint x="577" y="329" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-7" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-11" style="endArrow=classic;html=1;rounded=0;" target="jwv_zsEtPFzZU-A_QiCl-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="527" y="379" as="sourcePoint" />
+            <mxPoint x="577" y="329" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-9" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-6" style="endArrow=classic;html=1;rounded=0;" target="jwv_zsEtPFzZU-A_QiCl-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="665" />
+              <mxPoint x="836" y="655" />
+              <mxPoint x="832" y="277" />
+            </Array>
+            <mxPoint x="527" y="379" as="sourcePoint" />
+            <mxPoint x="577" y="329" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jwv_zsEtPFzZU-A_QiCl-11" edge="1" parent="1" source="3nP-YFDFcMzmsdA-fqh1-11" style="endArrow=classic;html=1;rounded=0;" target="j3dBNHRKnbWB1zPHTmDF-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="535" y="308" />
+              <mxPoint x="535" y="452" />
+            </Array>
+            <mxPoint x="527" y="379" as="sourcePoint" />
+            <mxPoint x="577" y="329" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
