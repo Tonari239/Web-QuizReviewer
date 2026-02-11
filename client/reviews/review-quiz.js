@@ -1,10 +1,10 @@
 const navbar=document.querySelector("#navbar");
 
-navbar.links=[
-{ text:"Home", href:"/test/client/landing/landing.html"},
-{ text:"Quizzes", href:"/test/client/quizzes/quizzes.html"},
-{ text:"Logout", href:"#logout"}
-];
+navbar.links = [
+		{ text: 'Моите куизове', href: "../my-quizzes/my-quizzes.html" },
+		{ text: 'Всички куизове', href: '../all-quizzes/all-quizzes.html' },
+		{ text: 'Профил', href: '../landing/landing.html' },
+	];
 
 navbar.addEventListener("logout",()=>{
 fetch("/test/index.php?logoutUser",{method:"POST"})
@@ -14,7 +14,7 @@ fetch("/test/index.php?logoutUser",{method:"POST"})
 const urlParams=new URLSearchParams(window.location.search);
 const quiz_id=urlParams.get("quiz_id") || 3;
 
-fetch(`/test/server/reviews/get-quiz-questions.php?quiz_id=${quiz_id}`)
+fetch(`/../../server/reviews/get-quiz-questions.php?quiz_id=${quiz_id}`)
 .then(res=>res.json())
 .then(data=>{
 
@@ -31,7 +31,7 @@ card.innerHTML=`
 <h3>${q.question_text}</h3>
 
 <div>
-<strong>Question difficulty:</strong>
+<strong>Трудност на въпроса:</strong>
 
 <input type="hidden"
 name="question_difficulty[${q.question_id}]"
@@ -48,7 +48,7 @@ ${Array.from({length:5},(_,i)=>
 
 <textarea
 name="question_reviews[${q.question_id}]"
-placeholder="Write your review..."
+placeholder="Напиши рецензия за въпроса..."
 ></textarea>
 `;
 

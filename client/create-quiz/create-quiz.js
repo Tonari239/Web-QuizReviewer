@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             header.textContent = `Качи .csv файл, за да започнеш :)`;
             navbar.links = [
                 { text: 'Профил', href: '../landing/landing.html' },
-                { text: 'Изход', href: '#logout' }
             ];
         } else {
             //Not logged in
@@ -37,11 +36,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             header.textContent = 'Влез в профила си, за да правиш тестове :)';
         }
 
-        navbar.addEventListener('logout',async () => {
-            localStorage.removeItem('username');
-            await fetch(router.getLogoutEndpoint(), { method: 'POST' });
-            window.location.reload();
-        });
     }catch (err) {
 		console.error('Session check failed', err);
 	}

@@ -44,7 +44,7 @@ else
 
 		const form = document.createElement("form");
 		form.method = "POST";
-		form.action = "/test/server/xml-exporter/export-moodle-xml.php";
+		form.action = "../../server/xml-exporter/export-moodle-xml.php";
 
 		const input = document.createElement("input");
 		input.type = "hidden";

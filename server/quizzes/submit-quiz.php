@@ -78,6 +78,14 @@ try {
         $pdo->rollBack();
     }
 
+    if ($e->errorInfo[1] == 1062) {
+        http_response_code(400);
+        echo json_encode([
+            'error' => 'Вече си правил този тест!'
+        ]);
+        exit;
+    }
+
     http_response_code(500);
     echo json_encode([
         'error' => $e->getMessage()
