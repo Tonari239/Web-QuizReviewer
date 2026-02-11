@@ -41,3 +41,25 @@ CREATE TABLE reviews (
     FOREIGN KEY (reviewer_user_guid) REFERENCES users(user_guid) ON DELETE CASCADE,
     UNIQUE(quiz_id, reviewer_user_guid)
 );
+
+CREATE TABLE quiz_attempts (
+    attempt_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_guid VARCHAR(255) NOT NULL,
+    quiz_id INT NOT NULL,
+    score INT NOT NULL,
+    submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (user_guid) REFERENCES users(user_guid),
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
+);
+
+CREATE TABLE user_answers (
+    answer_id INT AUTO_INCREMENT PRIMARY KEY,
+    attempt_id INT NOT NULL,
+    question_id INT NOT NULL,
+    selected_option_id INT NOT NULL,
+
+    FOREIGN KEY (attempt_id) REFERENCES quiz_attempts(attempt_id),
+    FOREIGN KEY (question_id) REFERENCES questions(question_id),
+    FOREIGN KEY (selected_option_id) REFERENCES question_options(option_id)
+);
