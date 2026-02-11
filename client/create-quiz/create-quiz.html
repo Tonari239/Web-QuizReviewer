@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quizzer</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="create-quiz.css">
+	<script type="module" src="../common/reused-components/nav-bar/navbar.js"></script>
+	<script type="module" src="create-quiz.js" defer></script>
+</head>
+
+<body>
+	<header>
+		<quiz-navbar active=""></quiz-navbar>
+	</header>
+	
+    <h1 id="createHeader">Качи .csv файл, за да започнеш :)</h1>
+    <h2 id="quizHeader" style="display: none;"> </h1>
+    <form id="csvForm">
+        <input type="file" id="csvFile" accept=".csv"/>
+        <button type="submit" id="upload-btn">Качи файл</button>
+    </form>
+
+    <div id="output" class="questions"></div>
+    <h1 id="finishHeader" style="display: none;">Готов?</h1>
+	<button id="saveQuizBtn">Запази теста</button>
+</body>
+</html>
