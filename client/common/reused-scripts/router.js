@@ -1,6 +1,8 @@
 export class Router {
 	constructor() {
-		this._baseUrl = 'https://localhost/test/';
+		const path = window.location.pathname;
+		const basePath = path.substring(0, path.indexOf('/client'));
+		this._baseUrl = window.location.origin + basePath + '/index.php';
 	}
 
 	getHomePageUrl() {
