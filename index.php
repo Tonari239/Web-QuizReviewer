@@ -78,7 +78,7 @@ class Application
 				echo json_encode(["error" => "Method not allowed. Use POST."]);
 				return;
 			}
-			echo $this->dataApi->deleteQuiz($_GET['id']);
+			echo $this->dataApi->deleteQuiz($_GET['quizId']);
 		}
 		elseif (isset($_GET['homePage'])) {
 			if ($_SERVER['REQUEST_METHOD'] !== 'GET') {

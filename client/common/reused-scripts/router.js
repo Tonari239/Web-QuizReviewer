@@ -19,9 +19,9 @@ export class Router {
 		return this._baseUrl + "?logoutUser";
 	}
 	
-	getDataApiEndpoint()
+	getDeleteQuizEndpoint(quizId)
 	{
-		return this._baseUrl + "/api";
+		return this._baseUrl + "?deleteQuiz&" + new URLSearchParams({quizId: quizId}).toString();
 	}
 
 	getMyQuizPreviews()

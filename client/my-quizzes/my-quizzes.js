@@ -4,8 +4,17 @@ import { ButtonCreatorCallback } from '../common/reused-scripts/button-creator-c
 
 const router = new Router();
 
-const deleteButton = new ButtonCreatorCallback("Изтрий", (quizId) => {
-	fetch(router.getDataApiEndpoint() + "/deleteQuiz/", new URLSearchParams({quizId: quizId}).toString());
+const deleteButton = new ButtonCreatorCallback("Изтрий", async(quizId) => {
+	var deleteResponse = await fetch(router.getDeleteQuizEndpoint(quizId), { method: "POST" }).then(response => response.json());
+
+	if(deleteResponse.successfulDelete)
+	{
+		window.location.reload();
+	}
+	else
+	{
+		alert(deleteResponse.error);
+	}
 }, "../../Image_resources/Icons/trash-can.png");
 
 const exportToXMLButton = new ButtonCreatorCallback("Експортирай",  (quizId) => {

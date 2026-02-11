@@ -50,7 +50,7 @@ export class QuizTable extends HTMLElement {
 			const operationsData = document.createElement('td');
 
 			nameData.textContent = quiz.name;
-			this._addOperations(operationsData);
+			this._addOperations(operationsData, quiz);
 
 			row.appendChild(nameData);
 			row.appendChild(operationsData);
@@ -59,7 +59,7 @@ export class QuizTable extends HTMLElement {
 		});
 	}
 
-	_addOperations(operationsData)
+	_addOperations(operationsData, quiz)
 	{
 		this._buttonsCreatorFunctions.forEach(buttonCreator => {
 			const button = document.createElement('button');
@@ -72,7 +72,7 @@ export class QuizTable extends HTMLElement {
 			buttonText.textContent = buttonCreator._buttonText;
 			button.appendChild(buttonText);
 
-			button.addEventListener('click', buttonCreator._onClickHandler);
+			button.addEventListener('click', () => buttonCreator._onClickHandler(quiz.id));
 			operationsData.appendChild(button);
 
 			operationsData.classList.add('operations-cell');

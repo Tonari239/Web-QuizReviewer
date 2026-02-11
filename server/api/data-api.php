@@ -41,10 +41,20 @@ class DataApi
 	public function deleteQuiz($quizId)
 	{
 		session_start();
-
-		//TODO: Add check to see if quiz belongs to user before deleting
-		//TODO: Wrap in try-catch; on fail return error, on success re-render the table
-		$this->dbManager->deleteWhere("quizzes", ["quiz_id"], [$quizId]);
+		
+	    $quiz = $this->dbManager->selectFieldsWhere("quizzes", ["creator_user_guid"], ["quiz_id"], [$quizId])[0];
+		if($quiz['creator_user_guid'] !== $_SESSION['user_guid']) {
+			http_response_code(403);
+			echo json_encode(["error" => "Нямате разрешение да изтриете този куиз."]);
+			return;
+		}
+		try {
+			$this->dbManager->deleteWhere("quizzes", ["quiz_id"], [$quizId]);
+			echo json_encode(["successfulDelete" => true]);
+		} catch (Exception $e) {
+			http_response_code(500);
+			echo json_encode(["error" => "Възникна грешка при изтриването на куиза."]);
+		}
 	}
 }
 
