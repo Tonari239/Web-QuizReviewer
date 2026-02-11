@@ -35,23 +35,24 @@ $general_review
 // --------------------
 // Save question reviews
 // --------------------
-foreach($question_reviews as $qid=>$text){
+foreach($question_reviews as $question_id=>$text){
 
-if(trim($text) === '') continue;
-
-$difficulty = $question_difficulty[$qid] ?? null;
+$difficulty = $question_difficulty[$question_id] ?? null;
 
 $difficulty = ($difficulty == 0) ? null : $difficulty;
+
+if(trim($text) === '' && $difficulty === null) continue;
+
 $stmt = $pdo->prepare("
 INSERT INTO question_reviews
-(question_id, reviewer_user_guid, review_text, difficulty)
-VALUES (?, ?, ?, ?)
+(quiz_id, question_id, reviewer_user_guid, review_text, difficulty)
+VALUES (?, ?, ?, ?, ?)
 ON DUPLICATE KEY UPDATE
 review_text = VALUES(review_text),
 difficulty = VALUES(difficulty)
 ");
 
-$stmt->execute([$qid,$user_guid,$text,$difficulty]);
+$stmt->execute([$quiz_id, $question_id,$user_guid,$text,$difficulty]);
 
 }
 
