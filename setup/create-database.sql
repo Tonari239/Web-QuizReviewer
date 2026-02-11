@@ -52,7 +52,7 @@ CREATE TABLE quiz_attempts (
     CONSTRAINT unique_user_quiz UNIQUE (user_guid, quiz_id),
  
     FOREIGN KEY (user_guid) REFERENCES users(user_guid),
-    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id) ON DELETE CASCADE
 );
 
 CREATE TABLE user_answers (
