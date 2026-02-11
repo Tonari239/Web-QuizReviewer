@@ -61,6 +61,8 @@ else
 		router.redirectTo("../reviews/reviews-list.html?quiz_id=" + quizId);
 	}, "../../Image_resources/Icons/eye.png");
 
+	
+
 	const buttonsCreatorFunctions = [deleteButton, exportToXMLButton, viewReviewsButton];
 	myQuizzesTable = new QuizTable(quizPreviews, buttonsCreatorFunctions);
 	const container = document.getElementById('quiz-container');

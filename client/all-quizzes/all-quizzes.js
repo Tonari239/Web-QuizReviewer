@@ -31,7 +31,11 @@ else
 		router.redirectTo("../reviews/review-quiz.html?quiz_id=" + quizId);
 	}, "../../Image_resources/Icons/grade.png");
 
-	const buttonsCreatorFunctions = [fillButton, reviewButton];
+	const viewQuizResultsButton = new ButtonCreatorCallback("Резултати", (quizId) => {
+		//TODO: redirect to quiz results page
+	}, "../../Image_resources/Icons/result.png");
+
+	const buttonsCreatorFunctions = [fillButton, reviewButton, viewQuizResultsButton];
 	myQuizzesTable = new QuizTable(quizPreviews, buttonsCreatorFunctions);
 	const container = document.getElementById('quiz-container');
 	container.appendChild(myQuizzesTable);
