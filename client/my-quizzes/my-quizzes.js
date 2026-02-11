@@ -26,7 +26,7 @@ const quizPreviews = await fetch(router.getMyQuizPreviews())
 .then(response => { 
 	var res = response.json(); 
 	return res;
-});
+}).catch(error => {return [];});
 const noQuizzesIndicator = document.getElementById('no-quizzes-indicator');
 if(quizPreviews.length === 0)
 {

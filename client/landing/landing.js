@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		//Logged in
 		header.textContent = `Здравей, ${username} :)`;
         navbar.links = [
+			{ text: 'Моите куизове', href: "../my-quizzes/my-quizzes.html" },
+			{ text: 'Всички куизове', href: '../all-quizzes/all-quizzes.html' },
 			{ text: 'Профил', href: '#' },
 			{ text: 'Изход', href: '#logout' }
 		];
