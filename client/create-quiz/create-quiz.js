@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             header.textContent = `Качи .csv файл, за да започнеш :)`;
             navbar.links = [
-                { text: 'Профил', href: '#' },
+                { text: 'Профил', href: '../landing/landing.html' },
                 { text: 'Изход', href: '#logout' }
             ];
         } else {
