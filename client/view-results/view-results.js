@@ -3,15 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.querySelector("#navbar");
 
     navbar.links = [
-        { text: "Home", href: "/test/client/landing/landing.html" },
-        { text: "Quizzes", href: "/test/client/quizzes/quizzes.html" },
-        { text: "Logout", href: "#logout" }
-    ];
+		{ text: 'Моите куизове', href: "../my-quizzes/my-quizzes.html" },
+		{ text: 'Всички куизове', href: '../all-quizzes/all-quizzes.html' },
+		{ text: 'Профил', href: '../landing/landing.html' },
+	];
 
-    navbar.addEventListener("logout", () => {
-        fetch("/test/index.php?logoutUser", { method: "POST" })
-            .then(() => window.location = "/test/client/landing/landing.html");
-    });
 
     const urlParams = new URLSearchParams(window.location.search);
     const attempt_id = urlParams.get("attempt_id");
@@ -21,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    fetch(`/test/server/reviews/get-quiz-results.php?attempt_id=${attempt_id}`)
+    fetch(`../../server/reviews/get-quiz-results.php?attempt_id=${attempt_id}`)
         .then(res => {
             if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
@@ -48,15 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.className = "question-card";
 
                 const answerClass = isCorrect ? "correct-answer" : "incorrect-answer";
-                const answerLabel = isCorrect ? "✓ You answered: " : "✗ You answered: ";
+                const answerLabel = isCorrect ? "✓ Ти отговори: " : "✗ Ти отговори: ";
 
                 card.innerHTML = `
-<h3>Question ${index + 1}</h3>
+<h3>Въпрос ${index + 1}</h3>
 <p>${q.question_text}</p>
 
 <div class="answer-section">
 <p class="${answerClass}">${answerLabel}${q.user_selected_option_text}</p>
-<p class="correct-answer">Correct answer: ${q.correct_option_text}</p>
+<p class="correct-answer">Правилен отговор: ${q.correct_option_text}</p>
 </div>
 `;
 
@@ -66,11 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const resultsSummary = document.createElement("div");
             resultsSummary.className = "results-summary";
-            resultsSummary.innerHTML = `Results: ${correctCount} out of ${data.questions.length}`;
+            resultsSummary.innerHTML = `Резултат: ${correctCount} / ${data.questions.length}`;
             container.appendChild(resultsSummary);
 
             const backButton = document.createElement("button");
-            backButton.textContent = "Back to Quizzes";
+            backButton.textContent = "Назад";
             backButton.onclick = () => window.location = "../all-quizzes/all-quizzes.html";
             container.appendChild(backButton);
 

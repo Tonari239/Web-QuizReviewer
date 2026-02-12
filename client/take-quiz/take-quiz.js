@@ -2,7 +2,18 @@ import { Router } from '../common/reused-scripts/router.js';
 
 var router = new Router();
 
+const navbar = document.querySelector('quiz-navbar');
+
+navbar.links = [
+		{ text: 'Моите куизове', href: "../my-quizzes/my-quizzes.html" },
+		{ text: 'Всички куизове', href: '../all-quizzes/all-quizzes.html' },
+		{ text: 'Профил', href: '../landing/landing.html' },
+	];
+
+
 document.addEventListener('DOMContentLoaded', async () => {
+
+    
 
 	const params = new URLSearchParams(window.location.search);
 	const quizId = params.get('id');

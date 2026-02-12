@@ -7,20 +7,22 @@ let previewQuestions = [];
 let previewQuizName = '';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    
+
     const navbar = document.querySelector('quiz-navbar');
     const username = localStorage.getItem('username');
-    
-    try{
+
+    try {
         const response = await fetch('../../server/authentication/me.php', {
-			credentials: 'include'
-		});
-		const data = await response.json();
+            credentials: 'include'
+        });
+        const data = await response.json();
         if (data.loggedIn) {
             //Logged in
 
             header.textContent = `Качи .csv файл, за да започнеш :)`;
             navbar.links = [
+                { text: 'Моите куизове', href: "../my-quizzes/my-quizzes.html" },
+                { text: 'Всички куизове', href: '../all-quizzes/all-quizzes.html' },
                 { text: 'Профил', href: '../landing/landing.html' },
             ];
         } else {
@@ -32,28 +34,28 @@ document.addEventListener('DOMContentLoaded', async () => {
             ];
             const fileInput = document.getElementById('csvForm');
             fileInput.style.display = 'none';
-            
+
             header.textContent = 'Влез в профила си, за да правиш тестове :)';
         }
 
-    }catch (err) {
-		console.error('Session check failed', err);
-	}
+    } catch (err) {
+        console.error('Session check failed', err);
+    }
 
 });
 
 function printQuestions(questions) {
-        const output = document.getElementById('output');
-        const saveButton = document.getElementById('saveQuizBtn');
-        saveButton.style.display = 'flex';
-        output.style.display = 'flex';
-        output.innerHTML = '';
+    const output = document.getElementById('output');
+    const saveButton = document.getElementById('saveQuizBtn');
+    saveButton.style.display = 'flex';
+    output.style.display = 'flex';
+    output.innerHTML = '';
 
-        questions.forEach((row, index) => {
-            const div = document.createElement('div');
-            div.className = 'question';
+    questions.forEach((row, index) => {
+        const div = document.createElement('div');
+        div.className = 'question';
 
-            div.innerHTML = `
+        div.innerHTML = `
                 <strong><u>Въпрос ${index + 1}: ${row.text}</u></strong><br>
                 А) ${row.answers[0]}<br>
                 Б) ${row.answers[1]}<br>
@@ -62,10 +64,10 @@ function printQuestions(questions) {
                 Отговор: ${row.correct}
             `;
 
-            output.appendChild(div);
-        });
-        
-    }
+        output.appendChild(div);
+    });
+
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -99,38 +101,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const quizHeader = document.getElementById('quizHeader');
         finishHeader.style.removeProperty('display');
         quizHeader.style.removeProperty('display');
-        quizHeader.textContent = 'Име на теста: '+ filename;
+        quizHeader.textContent = 'Име на теста: ' + filename;
         header.textContent = `Искаш да качиш друг файл?`;
         printQuestions(previewQuestions);
-    });    
+    });
 });
 
 document.getElementById('saveQuizBtn').addEventListener('click', async () => {
-	if (!isUploaded || previewQuestions.length === 0) {
-		alert('Няма качен тест за запазване');
-		return;
-	}
+    if (!isUploaded || previewQuestions.length === 0) {
+        alert('Няма качен тест за запазване');
+        return;
+    }
 
-	const response = await fetch('../../server/quizzes/save-quiz.php', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		credentials: 'include',
-		body: JSON.stringify({
-			quizName: previewQuizName,
-			questions: previewQuestions
-		})
-	});
+    const response = await fetch('../../server/quizzes/save-quiz.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+            quizName: previewQuizName,
+            questions: previewQuestions
+        })
+    });
 
-	const result = await response.json();
+    const result = await response.json();
 
-	if (result.success) {
-		alert('Тестът е запазен успешно!');
-		router.redirectTo('../my-quizzes/my-quizzes.html');
-	} else {
-		alert(result.error || 'Грешка при записване');
-	}
+    if (result.success) {
+        alert('Тестът е запазен успешно!');
+        router.redirectTo('../my-quizzes/my-quizzes.html');
+    } else {
+        alert(result.error || 'Грешка при записване');
+    }
 });
 
 
