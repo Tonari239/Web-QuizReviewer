@@ -6,10 +6,8 @@ navbar.links = [
 		{ text: 'Профил', href: '../landing/landing.html' },
 	];
 
-navbar.addEventListener("logout",()=>{
-fetch("/test/index.php?logoutUser",{method:"POST"})
-.then(()=>window.location="/test/client/landing/landing.html");
-});
+
+
 
 const urlParams=new URLSearchParams(window.location.search);
 const quiz_id=urlParams.get("quiz_id") || 3;
