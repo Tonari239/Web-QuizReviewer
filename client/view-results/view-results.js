@@ -48,11 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 card.innerHTML = `
 <h3>Въпрос ${index + 1}</h3>
-<p>${q.question_text}</p>
+<p>${parseOptionText(q.question_text)}</p>
 
 <div class="answer-section">
-<p class="${answerClass}">${answerLabel}${q.user_selected_option_text}</p>
-<p class="correct-answer">Правилен отговор: ${q.correct_option_text}</p>
+<p class="${answerClass}">${answerLabel}${parseOptionText(q.user_selected_option_text)}</p>
+<p class="correct-answer">Правилен отговор: ${parseOptionText(q.correct_option_text)}</p>
 </div>
 `;
 
@@ -77,3 +77,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 });
+
+function parseOptionText(text) {
+	var str = text;
+	if((str.includes("<") && str.includes(">")) 
+		|| (str.includes("<")) &&  str.includes("/>"))
+	{
+		if(str.includes("<"))
+		{
+			str = str.replace("<","&lt");
+			return str;
+		}
+		if(str.includes(">"))
+		{
+			str = str.replace(">","&gt");
+		}
+		if(str.includes("/>"))
+		{
+			str = str.replace("/>","/&gt");
+		}
+	}
+	
+	return str;
+}

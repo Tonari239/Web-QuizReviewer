@@ -58,12 +58,12 @@ function renderQuiz(questions) {
 
 			const label = document.createElement('label');
 			label.className = 'answer-box';
-
+			var parsedOptionText = parseOptionText(option.option_text);
 			label.innerHTML = `
 				<input type="radio" 
 				       name="question-${q.question_id}" 
 				       value="${option.option_id}">
-				<span>${option.option_text}</span>
+				<span>${parsedOptionText}</span>
 			`;
 
 			div.appendChild(label);
@@ -71,6 +71,29 @@ function renderQuiz(questions) {
 
 		container.appendChild(div);
 	});
+}
+
+function parseOptionText(text) {
+	var str = text;
+	if((str.includes("<") && str.includes(">")) 
+		|| (str.includes("<")) &&  str.includes("/>"))
+	{
+		if(str.includes("<"))
+		{
+			str = str.replace("<","&lt");
+			return str;
+		}
+		if(str.includes(">"))
+		{
+			str = str.replace(">","&gt");
+		}
+		if(str.includes("/>"))
+		{
+			str = str.replace("/>","/&gt");
+		}
+	}
+	
+	return str;
 }
 
 document.getElementById('submitQuiz').addEventListener('click', async () => {
