@@ -78,7 +78,26 @@ foreach ($questions as $question) {
     $qnode->addAttribute('type', 'multichoice');
 
     $name = $qnode->addChild('name');
-    $name->addChild('text', htmlspecialchars(substr($question['text'],0,50)));
+    $parsed = $question['text'];
+
+    if((strpos($parsed,"<")!=false && strpos($parsed,">")!= false) 
+		|| (strpos($parsed,"<") != false &&  strpos($parsed,"/>") != false))
+	{
+		if(strpos($parsed,"<")!=false)
+		{
+            $parsed = str_replace("<","&lt",$parsed);
+		}
+		if(strpos($parsed,">") != false)
+		{
+            $parsed = str_replace(">","&gt",$parsed);
+		}
+		if(strpos($parsed,"/>") != false)
+		{
+            $parsed = str_replace("/>","/&gt",$parsed);
+		}
+	}
+
+    $name->addChild('text', htmlspecialchars(substr($parsed,0,50)));
 
     $qtext = $qnode->addChild('questiontext');
     $qtext->addAttribute('format','html');

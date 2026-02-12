@@ -76,12 +76,11 @@ function renderQuiz(questions) {
 function parseOptionText(text) {
 	var str = text;
 	if((str.includes("<") && str.includes(">")) 
-		|| (str.includes("<")) &&  str.includes("/>"))
+		|| (str.includes("<") &&  str.includes("/>")))
 	{
 		if(str.includes("<"))
 		{
 			str = str.replace("<","&lt");
-			return str;
 		}
 		if(str.includes(">"))
 		{
