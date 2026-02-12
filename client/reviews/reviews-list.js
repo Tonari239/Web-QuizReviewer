@@ -11,7 +11,7 @@ navbar.links = [
 const urlParams=new URLSearchParams(window.location.search);
 const quiz_id = urlParams.get("quiz_id") || 3;
 
-fetch(`/../../server/reviews/get-quiz-reviews.php?quiz_id=${quiz_id}`)
+fetch(`../../server/reviews/get-quiz-reviews.php?quiz_id=${quiz_id}`)
 .then(res=>res.json())
 .then(data=>{
 

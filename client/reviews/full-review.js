@@ -19,7 +19,7 @@ const createStarDisplay = (rating) => {
   return filledStars + emptyStars;
 };
 
-fetch(`/../../server/reviews/get-full-review.php?quiz_id=${quiz_id}&user=${user}`)
+fetch(`../../server/reviews/get-full-review.php?quiz_id=${quiz_id}&user=${user}`)
 .then(res=>res.json())
 .then(data=>{
 
