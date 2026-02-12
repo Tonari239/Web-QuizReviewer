@@ -14,7 +14,7 @@ fetch("/test/index.php?logoutUser",{method:"POST"})
 const urlParams=new URLSearchParams(window.location.search);
 const quiz_id=urlParams.get("quiz_id") || 3;
 
-fetch(`/../../server/reviews/get-quiz-questions.php?quiz_id=${quiz_id}`)
+fetch(`../../server/reviews/get-quiz-questions.php?quiz_id=${quiz_id}`)
 .then(res=>res.json())
 .then(data=>{
 
