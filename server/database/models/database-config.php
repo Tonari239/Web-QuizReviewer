@@ -1,10 +1,10 @@
 <?php
 class DatabaseConfig
 {
-	private $DB_HOST;
-	private $DB_NAME;
-	private $DB_USER;
-	private $DB_PASS;
+	public $DB_HOST;
+	public $DB_NAME;
+	public $DB_USER;
+	public $DB_PASS;
 
 	public function __construct() {
         $configPath = __DIR__ . '/../../../setup/database-configuration.ini';
