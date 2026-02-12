@@ -104,8 +104,12 @@ foreach ($questions as $question) {
 // --------------------------------------------------
 $filename = "quiz_" . $quiz_id . "_moodle.xml";
 
-header("Content-Type: application/xml");
+$dom = dom_import_simplexml($xml)->ownerDocument;
+$dom->encoding = 'UTF-8';
+$dom->formatOutput = true;
+
+header("Content-Type: application/xml; charset=UTF-8");
 header("Content-Disposition: attachment; filename=\"$filename\"");
 
-echo $xml->asXML();
+echo $dom->saveXML();
 exit;
