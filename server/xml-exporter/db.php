@@ -1,8 +1,12 @@
 <?php
-$host = "localhost";
-$db   = "quizzer_db";
-$user = "root";
-$pass = "";
+require_once __DIR__ . '/../database/models/database-config.php';
+$dbConfig = new DatabaseConfig();
+
+$host = $dbConfig->DB_HOST;
+
+$db   = $dbConfig->DB_NAME;
+$user = $dbConfig->DB_USER;
+$pass = $dbConfig->DB_PASS;
 $charset = "utf8mb4";
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

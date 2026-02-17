@@ -205,108 +205,67 @@ INSERT INTO question_options (question_id, option_text, is_correct) VALUES
 (18, '$_REQUEST', FALSE),
 (18, '$_FORM', FALSE);
 
--- Question 19: MySQL connection function
 INSERT INTO question_options (question_id, option_text, is_correct) VALUES
 (19, 'mysql_connect()', FALSE),
 (19, 'new mysqli()', TRUE),
 (19, 'db_connect()', FALSE),
 (19, 'connect_mysql()', FALSE);
 
--- Question 20: Declare variable in PHP
 INSERT INTO question_options (question_id, option_text, is_correct) VALUES
 (20, 'var $name;', FALSE),
 (20, '$name;', FALSE),
 (20, '$name = value;', TRUE),
 (20, 'variable $name;', FALSE);
 
--- ============================================
--- INSERT REVIEWS
--- ============================================
--- Jane reviews John's quizzes
 INSERT INTO reviews (quiz_id, reviewer_user_guid, rating, review_text) VALUES
 (1, '550e8400-e29b-41d4-a716-446655440001', 5, 'Excellent quiz! Really helped me understand JavaScript fundamentals. The questions are well-structured and cover all the basics.'),
 (2, '550e8400-e29b-41d4-a716-446655440001', 4, 'Good coverage of HTML and CSS basics. Would love to see more advanced CSS topics in a follow-up quiz.');
 
--- John reviews Jane's quizzes
 INSERT INTO reviews (quiz_id, reviewer_user_guid, rating, review_text) VALUES
 (3, '550e8400-e29b-41d4-a716-446655440000', 5, 'Outstanding database quiz! The ACID and normalization questions were particularly helpful.'),
 (4, '550e8400-e29b-41d4-a716-446655440000', 5, 'Critical information for any web developer. Every programmer should take this quiz!');
 
--- Cross-review for PHP quiz
 INSERT INTO reviews (quiz_id, reviewer_user_guid, rating, review_text) VALUES
 (5, '550e8400-e29b-41d4-a716-446655440001', 4, 'Solid introduction to PHP. The superglobal questions were especially useful.');
 
 
---Jane reviews her own quiz (should be allowed)
 INSERT INTO reviews (quiz_id, reviewer_user_guid, rating, review_text) VALUES
 (3, '550e8400-e29b-41d4-a716-446655440001', 5, 'I am very proud of this quiz! It covers essential database design principles that every developer should know. I hope it helps others as much as it helped me when I was learning.');
--- ============================================
--- INSERT QUESTION REVIEWS
--- ============================================
 
--- John reviews Jane's quiz with question reviews
+
 INSERT INTO question_reviews (quiz_id, question_id, reviewer_user_guid, review_text, difficulty) VALUES
 (3, 1, '550e8400-e29b-41d4-a716-446655440001', 'Great question! Clear and straightforward.', 2),
 (3, 2, '550e8400-e29b-41d4-a716-446655440001', 'Good question, but could use an example.', 3),
 (3, 3, '550e8400-e29b-41d4-a716-446655440001', 'Excellent question that tests both value and type comparison.', 4),
 (3, 4, '550e8400-e29b-41d4-a716-446655440001', 'This question is a bit tricky for beginners.', 4);
 
--- ============================================
--- INSERT QUIZ ATTEMPTS
--- ============================================
--- john_doe attempts HTML & CSS Basics quiz (quiz_id: 2)
 INSERT INTO quiz_attempts (user_guid, quiz_id, score, submitted_at) VALUES
 ('550e8400-e29b-41d4-a716-446655440000', 2, 3, NOW());
 
--- jane_smith attempts JavaScript Fundamentals quiz (quiz_id: 1)
 INSERT INTO quiz_attempts (user_guid, quiz_id, score, submitted_at) VALUES
 ('550e8400-e29b-41d4-a716-446655440001', 1, 2, NOW());
 
--- ============================================
--- INSERT USER ANSWERS FOR ATTEMPT 1 (john_doe - HTML & CSS quiz)
--- ============================================
--- Question 5: Which HTML tag is used for the largest heading? (Correct: h1 = option 19)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (1, 5, 19);  -- Selected "h1" (CORRECT)
 
--- Question 6: What does CSS stand for? (Correct: option 23 = Cascading Style Sheets, selected 21 = Computer Style Sheets)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (1, 6, 21);  -- Selected "Computer Style Sheets" (INCORRECT)
 
--- Question 7: CSS property for text size? (Correct: option 26 = font-size)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (1, 7, 26);  -- Selected "font-size" (CORRECT)
 
--- Question 8: HTML element for line break? (Correct: option 31 = br)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (1, 8, 31);  -- Selected "br" (CORRECT)
 
--- ============================================
--- INSERT USER ANSWERS FOR ATTEMPT 2 (jane_smith - JavaScript quiz)
--- ============================================
--- Question 1: What keyword is used to declare a constant? (Correct: option 3 = const)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (2, 1, 3);  -- Selected "const" (CORRECT)
 
--- Question 2: Which method is used to add element to end of array? (Correct: option 5 = push, selected 6 = pop)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (2, 2, 6);  -- Selected "pop()" (INCORRECT)
 
--- Question 3: What does === operator do? (Correct: option 10 = Compares both value and type, selected 9 = Compares values only)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (2, 3, 9);  -- Selected "Compares values only" (INCORRECT)
 
--- Question 4: Which is NOT a JavaScript data type? (Correct: option 15 = Character)
 INSERT INTO user_answers (attempt_id, question_id, selected_option_id) VALUES
 (2, 4, 15);  -- Selected "Character" (CORRECT)
 
--- To see complete quiz with questions and options:
--- SELECT 
---     q.quiz_name,
---     qu.question_text,
---     qo.option_text,
---     qo.is_correct
--- FROM quizzes q
--- JOIN questions qu ON q.quiz_id = qu.quiz_id
--- JOIN question_options qo ON qu.question_id = qo.question_id
--- ORDER BY q.quiz_id, qu.question_id, qo.option_id;
